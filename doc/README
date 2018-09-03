@@ -1,1 +1,16 @@
 README
+Github Quickstart Guide
+
+Accessing The Repository
+1. Download Github for Desktop here https://desktop.github.com/
+2. Install Github Desktop
+3. Open the Program and sign in to Github
+4. Select "Clone a repository"
+5. Select "SpinOff" and take note of where the local repository will be saved. Click "clone".
+6. Make contributions to the local repository
+
+Commiting Repository Changes
+1. In Github Desktop make sure the current repository is set to "SpinOff"
+2. In the bottom left corner of the screen write a change summary in the boxed marked "Summary (Required)"
+3. Click "Commit to Master" in the bottom right corner of the screen
+4. At the top of the screen click "Push to origin"
