@@ -14,3 +14,9 @@ Commiting Repository Changes
 2. In the bottom left corner of the screen write a change summary in the boxed marked "Summary (Required)"
 3. Click "Commit to Master" in the bottom right corner of the screen
 4. At the top of the screen click "Push to origin"
+
+Reverting a Commit
+1. In Github Desktop make sure the current repository is set to "SpinOff"
+2. In the upper left corner of the screen click "History"
+3. Right click on the commit you would like to revert and select "Revert this commit"
+4. Commit the Repository Changes
