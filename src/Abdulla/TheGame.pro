@@ -24,7 +24,6 @@ SOURCES += \
     gameengine.cpp \
     gamemodel.cpp \
     parallaxbackground.cpp \
-    hero.cpp \
     painthelper.cpp
 
 HEADERS += \
