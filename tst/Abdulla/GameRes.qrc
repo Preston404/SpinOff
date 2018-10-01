@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/background.png</file>
+        <file>Level_1.txt</file>
+        <file>images/floor_bottom.png</file>
+    </qresource>
+</RCC>
