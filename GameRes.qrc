@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/background.png</file>
+        <file>images/floor_grass.png</file>
+        <file>images/EnemyBat.png</file>
+        <file>images/EnemyBat_right.png</file>
+        <file>images/EnemyBat_die.png</file>
+        <file>Level_1.txt</file>
+        <file>images/floor_bottom.png</file>
+        <file>images/hero_walk_sprites.png</file>
+        <file>images/hero_walk_sprites_left.png</file>
+        <file>images/hero_idle.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,32 @@
+{
+    "PlayersArray": [
+        {
+            "ID": 1,
+            "currentlevel": 3,
+            "name": "Abdullah",
+            "password": "password",
+            "score": 100
+        },
+        {
+            "ID": 2,
+            "currentlevel": 2,
+            "name": "John",
+            "password": "password",
+            "score": 30
+        },
+        {
+            "ID": 3,
+            "currentlevel": 1,
+            "name": "Carine",
+            "password": "password",
+            "score": 0
+        },
+        {
+            "ID": 1536200151,
+            "currentlevel": 1,
+            "name": "Rani",
+            "password": "pass",
+            "score": 0
+        }
+    ]
+}

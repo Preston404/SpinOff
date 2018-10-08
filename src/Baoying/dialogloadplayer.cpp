@@ -1,4 +1,4 @@
-#include "dialogloadplayer.h"
+#include "inc/Baoying/dialogloadplayer.h"
 #include "ui_dialogloadplayer.h"
 #include <QMessageBox>
 
@@ -38,6 +38,24 @@ void DialogLoadPlayer::on_buttonBox_accepted(){
     }
 
 
+
+//    //Check the ID input if it's a valid INT
+//    //You can use QString::toInt() method. Which take an optional boolean pointer as argument, giving the result of the conversion.
+//    bool ok;
+//    int parsedID = ui->lineEditID->text().toInt(&ok, 10);
+//    if(!ok)
+//    {
+//        //The name is not valid !
+//        QMessageBox *Msgbox = new QMessageBox(this);
+//        Msgbox->setIcon(QMessageBox::Critical);
+//        Msgbox->setText("You must enetr a valid user ID !");
+//        Msgbox->exec();
+//        delete Msgbox;
+
+//        //Keep the dialog open
+//        return;
+//    }
+
     this->PlayerPassword= ui->lineEditPWD->text().trimmed();
     this->PlayerName = ui->lineEditPlayerName->text().trimmed();
     //After passing all these checks we can close the dialog
@@ -48,7 +66,3 @@ void DialogLoadPlayer::on_buttonBox_accepted(){
 void DialogLoadPlayer::on_buttonBox_rejected(){
     this->reject();
 }
-
-
-
-
