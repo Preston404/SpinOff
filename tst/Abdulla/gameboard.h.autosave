@@ -1,0 +1,177 @@
+#ifndef GAMEBOARD_H
+#define GAMEBOARD_H
+
+#include <QWidget>
+//#include <QKeyEvent>
+//#include <QMutableMapIterator>
+#include <QObject>
+
+#include "safe.h"
+#include "floor.h"
+#include "mario.h"
+#include "model.h"
+
+
+#include <QtGlobal>
+#include <QObject>
+#include <QList>
+#include <player.h>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QDebug>
+#include <QDir>
+#include <QJsonArray>
+#include <QListIterator>
+#include <QList>
+
+
+
+//class WidgetVP;
+
+
+class GameBoard : QObject
+{
+    Q_OBJECT
+
+public:
+    GameBoard(Model *m, WidgetVP *v);
+    ~GameBoard();
+    
+    
+    
+    //--------------------------------------------------------------
+    //Funations and Procedures
+    //--------------------------------------------------------------
+
+    //The list of players that we will load from the JSON file containing the players of this game
+    void LoadPlayersFile();
+
+
+
+    //Check if the player already exists in the list before adding or loading a player
+    bool PlayerExists(QString name, QString Password);
+
+
+    //Get a player from the list by ID
+    Player* GetPlayerbyID(int ID);
+
+
+    //Get a player from the list by name and password
+    Player* GetPlayer(QString Name, QString Password);
+
+    //--------------------------------------------------------------
+    //Fields
+    //--------------------------------------------------------------
+
+    //The List of all players who we load or save to the JSON file
+    QList<Player*> PlayersList;
+
+    //The Current Player using the game
+    Player* ActivePlayer;
+
+
+    
+    void stopGame();
+    void movementMario();
+    void moveXMario(int );
+    void movementBackground();
+    void movementMushroom(int );
+    void movementPeach();
+    void moveBrick(int ,Brick *);
+    void movementMysticTree(int );
+    void movementEncart();
+    void movementMap(int );
+    void splashScreen();
+    bool GameOver();
+    bool Completed();
+    void hurted();
+    void Peach();
+    bool intersectBottomMario(int );
+    bool intersectTopMario(int );
+    bool intersectRightMario(int );
+    bool intersectLeftMario(int );
+    void intersectGoldMario(int );
+    void intersectMushroomMario(int );
+    void intersectYDarkEaterMario(int );
+    void intersectXDarkEaterMario(int );
+    void intersectFlameMario(int );
+    bool intersectBottomBrick(Brick *);
+    bool intersectRightBrick(Brick *);
+    bool intersectLeftBrick(Brick *);
+    void intersectMysticTreeMario(int i);
+    void intersectPeachMario();
+    void attackMysticTree(int i);
+    void goldAnim();
+    void flameAnim();
+    void shockAnim();
+    void darkeaterAnim(int );
+    void BackgroundAnim(int );
+    void fantom();
+    void encart();
+    inline bool getIsMovingR(){ return getModel()->getMario()->getIsMovingR(); }
+    inline bool getIsMovingL(){ return getModel()->getMario()->getIsMovingL(); }
+    inline bool getIsJumping(){ return getModel()->getMario()->getIsJumping(); }
+    inline bool getIsAttacking(){ return getModel()->getMario()->getIsAttacking(); }
+    inline void setIsMovingR(bool is){ getModel()->getMario()->setIsMovingR(is); }
+    inline void setIsMovingL(bool is){ getModel()->getMario()->setIsMovingL(is); }
+    inline void setIsJumping(bool is){ getModel()->getMario()->setIsJumping(is); }
+    inline void setIsAttacking(bool is){ getModel()->getMario()->setIsAttacking(is); }
+    inline void setIsGameOver(bool is){ this->isGameOver = is; }
+    inline bool getIsGameOVer(){ return isGameOver; }
+    bool getMoveMap(){return moveMap;}
+    inline std::tuple<> getAllObjects();
+    inline Model *getModel(){ return this->model; }
+    inline qreal getOpacity(){ return opacity; }
+    inline void setOpacity(qreal opacity){this->opacity = opacity; }
+    inline int getXRelatif(){ return xRelatif; }
+    inline void setXRelatif(int x){this->xRelatif = x; }
+
+
+    //--------------------------------------------------------------
+    //Fields
+    //--------------------------------------------------------------
+
+    //The List of all players who we load or save to the JSON file
+    QList<Player*> PlayersList;
+
+    //The Current Player using the game
+    Player* ActivePlayer;
+    
+    
+    
+    //No implementation
+    signals:
+        void PlayersListUpdated();
+        //Called when its signal is emitted
+        
+        public slots:
+            //The list of players that we will save to the JSON file containing the players of this game
+            void SavePlayersFile();
+    
+private:
+    void timerEvent(QTimerEvent *event);
+
+    Model *model;
+    WidgetVP *view;
+    bool gameStarted;
+    int xRelatif;
+    int yRelatif;
+    int startJumpY;
+    int iterBackground;
+    int tempMove = 0;
+    int marioSize;
+    int tempDarkEater = 0;
+    int peachTempo = 0;
+    int tempGold = 0;
+    int tempFlame = 0;
+    int tempShock = 0;
+    qreal opacity = 1;
+    bool isLittle;
+    bool isGameOver = false;
+    bool moveMap=false;
+    int showBloodCount = 0;
+    int encartTime = 0;
+    int timerId=0;
+};
+#endif // GAMEBOARD_H
