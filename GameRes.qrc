@@ -10,5 +10,6 @@
         <file>images/hero_walk_sprites.png</file>
         <file>images/hero_walk_sprites_left.png</file>
         <file>images/hero_idle.png</file>
+        <file>images/coin.png</file>
     </qresource>
 </RCC>

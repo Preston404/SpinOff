@@ -66,6 +66,8 @@ public:
     void intersectYBatEnemy(int );
     void intersectXBatEnemy(int );
 
+    void intersectCollectible(int i);
+
     bool intersectBottomBrick(Brick *);
     bool intersectRightBrick(Brick *);
     bool intersectLeftBrick(Brick *);

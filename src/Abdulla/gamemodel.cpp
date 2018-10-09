@@ -5,6 +5,7 @@
 
 #include "inc/Isaac/floor.h"
 #include "inc/Preston/enemybat.h"
+#include "inc/Isaac/collectible.h"
 #include <QDebug>
 #include <QMessageBox>
 
@@ -12,6 +13,7 @@ GameModel::GameModel(){
     this->background = new QList<ParallaxBackground *>;
     this->floors = new QList<Floor *>;
     this->enemyBat=new QList<EnemyBat *>;
+    this->collectibles = new QList<collectible *>;
     this->background = new QList<ParallaxBackground *>;
     this->BricksToDraw = new QList<Brick*> ;
     this->TheHero = new Hero(200, 340);
@@ -93,6 +95,9 @@ GameModel::~GameModel(){
     background->clear();
     delete background;
 
+    collectibles->clear();
+    delete collectibles;
+
     enemyBat->clear();
     delete enemyBat;
 
@@ -120,6 +125,12 @@ void GameModel::createBrick(QList<QChar> l,int num,int x) {
     else if(myChar == '7') {
         Floor *k= new Floor(x+brickSize,GameViewHeight-num*brickSize, QString(":images/floor_grass.png"));
         floors->append(k);
+        return;
+    }
+    else if(myChar == '9') {
+        collectible* d = new collectible(x+brickSize, GameViewHeight-num*brickSize,":images/coin.png");
+        collectibles->append(d);
+        qDebug("Found a coin");
         return;
     }
 }

@@ -169,6 +169,11 @@ void MainWindow::UpdateFrame(GameEngine* eng)
         eng->BatEnemyAnim(i);
         eng->getModel()->getEnemyBat()->at(i)->accept(pVisitor);
     }
+    for(int i = 0; i<eng->getModel()->getCollectibles()->size(); i++) {
+        if(eng->getMoveMap())
+            eng->getModel()->getCollectibles()->at(i)->moveBrick();
+        eng->getModel()->getCollectibles()->at(i)->accept(pVisitor);
+    }
 
     eng->getModel()->getHero()->setRect(QRect(eng->getModel()->getHero()->getRect().x(), eng->getModel()->getHero()->getRect().y(), 45, eng->getModel()->getHero()->getMoveRSprite().height() - 7));
     eng->getModel()->getHero()->setSrcRect(QRect(eng->getModel()->getHero()->getCurrentFrame()+6, 1, eng->getModel()->getHero()->getRect().width(), eng->getModel()->getHero()->getRect().height()));

@@ -9,6 +9,7 @@
 #include <QChar>
 #include "inc/Isaac/parallaxbackground.h"
 #include "inc/Preston/enemybat.h"
+#include "inc/Isaac/collectible.h"
 class Floor;
 class Hero;
 class Brick;
@@ -30,6 +31,7 @@ public:
     QList<ParallaxBackground*> *getBackground() {return background;    }
     //List of enemies
     QList<EnemyBat*> *getEnemyBat() {            return enemyBat;      }
+    QList<collectible*> *getCollectibles() {            return collectibles;      }
 
     //Announce the end of this level
     void AnnounceCompleted();
@@ -48,6 +50,7 @@ private:
     QList<ParallaxBackground*> *background;
     //List of enemy bats
     QList<EnemyBat *> *enemyBat;
+    QList<collectible *> *collectibles;
     Hero *TheHero;
     //6 text lines which represent the bricks in the game
     QList<QChar> LINE_a; QList<QChar> LINE_b; QList<QChar> LINE_c;

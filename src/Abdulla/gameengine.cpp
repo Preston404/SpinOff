@@ -240,10 +240,13 @@ Player *GameEngine::GetPlayer(QString Name, QString Password){
 //----------------------------------------------------------------------------------------------------------------//
 //Compute logic for the hero movement
 //----------------------------------------------------------------------------------------------------------------//
-void GameEngine::movementHero(){
-    int y=model->getHero()->getRect().y();
-    if(getIsJumping()) {
-        for(int i=0; i<4; ++i) {
+void GameEngine::movementHero()
+{
+    int y = model->getHero()->getRect().y();
+    if(getIsJumping())
+    {
+        for(int i=0; i<4; ++i)
+        {
             xRelative += 1;
         }
 
@@ -251,7 +254,8 @@ void GameEngine::movementHero(){
         y = startJumpY-yRelative;
         moveXHero(y);
         model->getHero()->setCurrentFrame(0);
-        if(intersectTopHero(0)) {
+        if(intersectTopHero(0))
+        {
             xRelative=0;
             yRelative=0;
             startJumpY=model->getHero()->getRect().y();
@@ -259,54 +263,81 @@ void GameEngine::movementHero(){
         }
     }
 
-    if(intersectBottomHero(0)) {
+    if(intersectBottomHero(0))
+    {
         xRelative=0;
         yRelative=0;
         startJumpY=model->getHero()->getRect().y();
         setIsJumping(false);
         moveXHero(y);
         //Animation calc for next frame
-        if(getIsMovingR() && tempMove == 1) {
-            for(int i=0; i<57; i++) {
+        if(getIsMovingR() && tempMove == 1)
+        {
+            for(int i=0; i<57; i++)
+            {
                 model->getHero()->setCurrentFrame(model->getHero()->getCurrentFrame() + 1);
             }
-
             if (model->getHero()->getCurrentFrame() >= 1190 )
+            {
                 model->getHero()->setCurrentFrame(0);
+            }
             tempMove = 0;
         }
         else if(getIsMovingR())
+        {
             tempMove++;
-        else if(getIsMovingL() && tempMove == 1) {
-            for(int i=0; i<57; i++) {
-                model->getHero()->setCurrentFrame(model->getHero()->getCurrentFrame() - 1);       }
-
+        }
+        else if(getIsMovingL() && tempMove == 1)
+        {
+            for(int i=0; i<57; i++)
+            {
+                model->getHero()->setCurrentFrame(model->getHero()->getCurrentFrame() - 1);
+            }
             if (model->getHero()->getCurrentFrame() <= 0 )
+            {
                 model->getHero()->setCurrentFrame(1191);
+            }
             tempMove = 0;
         }
         else if(getIsMovingL())
+        {
             tempMove++;
+        }
         else
+        {
             model->getHero()->setCurrentFrame(0);
+        }
     }
 
-    if((!intersectBottomHero(0) && !getIsJumping())) {
+    if((!intersectBottomHero(0) && !getIsJumping()))
+    {
         yRelative=(-0.02*(xRelative*xRelative));
-        for(int i=0; i<4; ++i) {
-            xRelative += 1; }
+        for(int i=0; i<4; ++i)
+        {
+            xRelative += 1;
+        }
         //xRelatif+=4;
-        if(getIsAttacking()) {
-            for(int i=0; i<7; ++i) {
-                xRelative += 1; }
+        if(getIsAttacking())
+        {
+            for(int i=0; i<7; ++i)
+            {
+                xRelative += 1;
+            }
         }
         y = startJumpY-yRelative;
         moveXHero(y);
         model->getHero()->setCurrentFrame(0);
     }
+
+    // Check for intersection with collectible
+    for(int i = 0; i< model->getCollectibles()->length(); i++)
+    {
+        intersectCollectible(i);
+    }
 }
 
-void GameEngine::moveBrick(int x,Brick * b){
+void GameEngine::moveBrick(int x,Brick * b)
+{
     int speed;
     if(moveMap )
         speed=Brick::speed ;
@@ -314,35 +345,52 @@ void GameEngine::moveBrick(int x,Brick * b){
         speed = 0;
 
 
-    if(intersectBottomBrick(b))    {
-        if(b->getMoveX()) {
+    if(intersectBottomBrick(b))
+    {
+        if(b->getMoveX())
+        {
             b->move(x-speed+2, b->getRect().y());
             if(intersectRightBrick(b))
-                b->setMoveX(false);      }
-        else if(!b->getMoveX()) {
+            {
+                b->setMoveX(false);
+            }
+        }
+        else if(!b->getMoveX())
+        {
             b->move(x-speed-2, b->getRect().y());
             if( intersectLeftBrick(b) || b->getRect().x()<3)
-                b->setMoveX(true);       }
+            {
+                b->setMoveX(true);
+            }
+        }
         b->setYR(0);
         b->setXR(0);
         b->setStartY(b->getRect().y());
     }
-    else    {
+    else
+    {
         b->setYR(-0.02*(b->getXR()*b->getXR()));
         b->setXR(b->getXR()+3);
-        int y = b->getStartY()- b->getYR();
-        if(b->getMoveX()) {
+        int y = b->getStartY() - b->getYR();
+        if(b->getMoveX())
+        {
             b->move(x-speed+2, y);
             if(intersectRightBrick(b))
-                b->setMoveX(false);     }
-        else if(!b->getMoveX()) {
+                b->setMoveX(false);
+        }
+        else if(!b->getMoveX())
+        {
             b->move(x-speed-2,y);
             if( intersectLeftBrick(b))
-                b->setMoveX(true);      }
+            {
+                b->setMoveX(true);
+            }
+        }
     }
 }
 
-void GameEngine::moveXHero(int y){
+void GameEngine::moveXHero(int y)
+{
     int x=model->getHero()->getRect().x();
 
     if(!intersectLeftHero(0) && model->getHero()->getRect().x()>=2 && getIsMovingL() )
@@ -357,27 +405,34 @@ void GameEngine::moveXHero(int y){
     model->getHero()->move(x,y);
 }
 //----------------------------------------------------------------------------------------------------------------//
-bool GameEngine::intersectTopHero(int i){
-    if(i<model->getFloors()->size() ) {
-        if(!model->getFloors()->empty() && i<model->getFloors()->size()) {
+bool GameEngine::intersectTopHero(int i)
+{
+    // Recursively Check each possible item to be intersected with
+    if(i<model->getFloors()->size() || i < model->getCollectibles()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size())
+        {
             if(model->getHero()->intersectTop(model->getFloors()->at(i)->getRect()))
                 return true;
         }
-
         intersectTopHero(i+1);
     }
     else
         return false;
 }
-bool GameEngine::intersectBottomHero(int i){
+bool GameEngine::intersectBottomHero(int i)
+{
+    // Recursively Check each possible item to be intersected with
     if(i<model->getFloors()->size()
-    || i<model->getEnemyBat()->size()) {
-        if(!model->getFloors()->empty() && i<model->getFloors()->size()) {
+    || i<model->getEnemyBat()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size())
+        {
             if(model->getHero()->intersectBottom(model->getFloors()->at(i)->getRect()))
                 return true;
         }
-
-        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size()) {
+        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
+        {
             if(model->getHero()->intersectBottom(model->getEnemyBat()->at(i)->getRect()) ) {
                 intersectYBatEnemy(i);
                 return true; }
@@ -387,13 +442,18 @@ bool GameEngine::intersectBottomHero(int i){
     else
         return false;
 }
-bool GameEngine::intersectLeftHero(int i){
-    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size())   {
-        if(!model->getFloors()->empty() && i<model->getFloors()->size())   {
+bool GameEngine::intersectLeftHero(int i)
+{
+    // Recursively Check each possible item to be intersected with
+    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size())
+        {
             if(model->getHero()->intersectLeft(model->getFloors()->at(i)->getRect()))
                 return true;
         }
-        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size()) {
+        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
+        {
             if(model->getHero()->intersectLeft(model->getEnemyBat()->at(i)->getRect()))
                 return true;
         }
@@ -402,13 +462,18 @@ bool GameEngine::intersectLeftHero(int i){
     else
         return false;
 }
-bool GameEngine::intersectRightHero(int i){
-    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size())   {
-        if(!model->getFloors()->empty() && i<model->getFloors()->size() )    {
+bool GameEngine::intersectRightHero(int i)
+{
+    // Recursively Check each possible item to be intersected with
+    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size() )
+        {
             if(model->getHero()->intersectRight(model->getFloors()->at(i)->getRect()))
                 return true;
         }
-        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size()) {
+        if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
+        {
             if(model->getHero()->intersectRight(model->getEnemyBat()->at(i)->getRect()))
                 return true;
         }
@@ -419,17 +484,28 @@ bool GameEngine::intersectRightHero(int i){
 }
 
 
-void GameEngine::intersectXBatEnemy(int i){
-    if(  !model->getEnemyBat()->at(i)->isDestroyed()
-            &&( model->getEnemyBat()->at(i)->intersectRight(model->getHero()->getRect())||model->getEnemyBat()->at(i)->intersectLeft(model->getHero()->getRect())))
+void GameEngine::intersectXBatEnemy(int i)
+{
+    if(!model->getEnemyBat()->at(i)->isDestroyed() &&
+          (model->getEnemyBat()->at(i)->intersectRight(model->getHero()->getRect()) ||
+           model->getEnemyBat()->at(i)->intersectLeft(model->getHero()->getRect())))
     {
 
-        if( !model->getHero()->getIsMovingR()&& !model->getHero()->getIsMovingL())
+        if(!model->getHero()->getIsMovingR() &&
+           !model->getHero()->getIsMovingL() )
+        {
             model->getEnemyBat()->at(i)->setMoveX(!model->getEnemyBat()->at(i)->getMoveX());
-        if(getModel()->getHero()->getIsMovingR() && !model->getEnemyBat()->at(i)->getMoveX())
+        }
+        if(getModel()->getHero()->getIsMovingR() &&
+           !model->getEnemyBat()->at(i)->getMoveX())
+        {
             model->getEnemyBat()->at(i)->setMoveX(!model->getEnemyBat()->at(i)->getMoveX());
-        else if(getModel()->getHero()->getIsMovingL() && model->getEnemyBat()->at(i)->getMoveX())
+        }
+        else if(getModel()->getHero()->getIsMovingL() &&
+                model->getEnemyBat()->at(i)->getMoveX())
+        {
             model->getEnemyBat()->at(i)->setMoveX(!model->getEnemyBat()->at(i)->getMoveX());
+        }
 
         this->model->getHero()->setIsHurted(true);
     }
@@ -443,7 +519,17 @@ void GameEngine::intersectYBatEnemy(int i){
     }
     if(!model->getEnemyBat()->at(i)->isDestroyed() && getIsAttacking())    {
         getModel()->getEnemyBat()->at(i)->setSprite(QString(":images/EnemyBat_die.png"));
-        model->getEnemyBat()->at(i)->setDestroyed(true);    }
+        model->getEnemyBat()->at(i)->setDestroyed(true);
+    }
+}
+
+void GameEngine::intersectCollectible(int i){
+    if(!model->getCollectibles()->at(i)->isDestroyed() &&
+          (model->getCollectibles()->at(i)->intersectRight(model->getHero()->getRect()) ||
+           model->getCollectibles()->at(i)->intersectLeft(model->getHero()->getRect())))
+    {
+        model->getCollectibles()->removeAt(i);
+    }
 }
 
 bool GameEngine::intersectBottomBrick(Brick * m){
@@ -469,7 +555,8 @@ bool GameEngine::intersectRightBrick(Brick * m){
 
 
 void GameEngine::BatEnemyAnim(int i){
-    if(tempEnemyBat == 15) {
+    if(tempEnemyBat == 15)
+    {
         EnemyBat::currentFrame += 52;
         if (EnemyBat::currentFrame >= 156)
             EnemyBat::currentFrame = 1;
@@ -478,9 +565,10 @@ void GameEngine::BatEnemyAnim(int i){
     else
         tempEnemyBat++;
     int x=model->getEnemyBat()->at(i)->getRect().x();
-    if(!model->getEnemyBat()->at(i)->isDestroyed()) {
+    if(!model->getEnemyBat()->at(i)->isDestroyed())
+    {
         moveBrick(x,model->getEnemyBat()->at(i));
-        intersectXBatEnemy( i);
+        intersectXBatEnemy(i);
         if(model->getEnemyBat()->at(i)->getMoveX())
             getModel()->getEnemyBat()->at(i)->setSprite(QString(":images/EnemyBat_right.png"));
         else

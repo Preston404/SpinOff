@@ -37,7 +37,7 @@ class Brick{
             p->PaintImage(this);
         }
 
-        //sprites are animation sequences designed in a special way to simulate a an animation
+        //sprites are animation sequences designed in a special way to simulate an animation
         QPixmap getSprite() {
             return sprite;
         }

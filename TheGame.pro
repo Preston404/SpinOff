@@ -37,7 +37,8 @@ SOURCES += \
     src/Preston/gamecharacter.cpp \
     src/Preston/enemybat.cpp \
     src/Preston/hero.cpp \
-    src/Isaac/painthelper.cpp
+    src/Isaac/painthelper.cpp \
+    src/Isaac/collectible.cpp
 
 HEADERS += \
         inc/Abdulla/mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS += \
     inc/Preston/gamecharacter.h \
     inc/Preston/enemybat.h \
     inc/Preston/hero.h \
-    inc/Isaac/painthelper.h
+    inc/Isaac/painthelper.h \
+    inc/Isaac/collectible.h
 
 FORMS += \
         inc/Abdulla/mainwindow.ui \
