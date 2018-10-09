@@ -20,3 +20,6 @@ Reverting a Commit
 2. In the upper left corner of the screen click "History"
 3. Right click on the commit you would like to revert and select "Revert this commit"
 4. Commit the Repository Changes
+
+General Commits
+- You can verfiy your build directory by selecting the projects tab
