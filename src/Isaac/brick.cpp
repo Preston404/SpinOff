@@ -1,4 +1,4 @@
-#include "inc/Isaac/brick.h"
+#include "inc/IR_brick.h"
 #include <QDebug>
 
 

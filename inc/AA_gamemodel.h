@@ -7,9 +7,9 @@
 #include <QList>
 #include <QTextStream>
 #include <QChar>
-#include "inc/Isaac/parallaxbackground.h"
-#include "inc/Preston/enemybat.h"
-#include "inc/Isaac/collectible.h"
+#include "inc/IR_parallaxbackground.h"
+#include "inc/PS_enemybat.h"
+#include "inc/IR_collectible.h"
 class Floor;
 class Hero;
 class Brick;

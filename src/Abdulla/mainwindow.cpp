@@ -1,4 +1,4 @@
-#include "inc/Abdulla/mainwindow.h"
+#include "inc/AA_mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
 #include <QString>

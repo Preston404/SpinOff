@@ -1,7 +1,7 @@
 #ifndef ParallaxBackground_H
 #define ParallaxBackground_H
 
-#include "brick.h"
+#include "inc/IR_brick.h"
 
 class ParallaxBackground : public Brick{
 public:

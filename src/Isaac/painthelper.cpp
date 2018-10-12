@@ -1,6 +1,6 @@
-#include "inc/Isaac/painthelper.h"
-#include "inc/Preston/gamecharacter.h"
-#include "inc/Isaac/brick.h"
+#include "inc/IR_painthelper.h"
+#include "inc/PS_gamecharacter.h"
+#include "inc/IR_brick.h"
 #include <QDebug>
 
 PaintHelper::PaintHelper(QPainter *painter){

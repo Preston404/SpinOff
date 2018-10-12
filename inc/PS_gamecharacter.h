@@ -5,7 +5,7 @@
 #include <QImage>
 #include <QRect>
 #include <QString>
-#include "inc/Isaac/painthelper.h"
+#include "inc/IR_painthelper.h"
 
 //base class for the hero character
 class GameCharacter{
@@ -103,6 +103,7 @@ public:
 
 
     bool intersect(QRect );
+    bool attack_intersect(QRect );
     void accept(PaintHelper *p) {
         p->PaintPixmap(this);
     }

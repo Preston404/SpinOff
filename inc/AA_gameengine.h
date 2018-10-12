@@ -4,14 +4,14 @@
 #include <QWidget>
 #include <QObject>
 
-#include "inc/Isaac/floor.h"
-#include "inc/Preston/hero.h"
-#include "gamemodel.h"
+#include "inc/IR_floor.h"
+#include "inc/PS_hero.h"
+#include "inc/AA_gamemodel.h"
 
 #include <QtGlobal>
 #include <QObject>
 #include <QList>
-#include "inc/Baoying/player.h"
+#include "inc/BL_player.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>

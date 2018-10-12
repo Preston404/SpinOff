@@ -2,7 +2,7 @@
 #define Hero_H
 
 #include <QDebug>
-#include "gamecharacter.h"
+#include "inc/PS_gamecharacter.h"
 
 class Hero : public GameCharacter
 {

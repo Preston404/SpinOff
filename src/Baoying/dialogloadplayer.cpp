@@ -1,4 +1,4 @@
-#include "inc/Baoying/dialogloadplayer.h"
+#include "inc/BL_dialogloadplayer.h"
 #include "ui_dialogloadplayer.h"
 #include <QMessageBox>
 

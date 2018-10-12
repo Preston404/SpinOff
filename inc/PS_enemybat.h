@@ -1,7 +1,7 @@
 #ifndef EnemyBat_H
 #define EnemyBat_H
 
-#include "inc/Isaac/brick.h"
+#include "inc/IR_brick.h"
 
 // A simple enemy object derived from the brick class
 class EnemyBat : public Brick

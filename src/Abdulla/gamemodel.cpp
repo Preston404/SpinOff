@@ -1,11 +1,11 @@
-#include "inc/Abdulla/gamemodel.h"
-#include "inc/Isaac/brick.h"
+#include "inc/AA_gamemodel.h"
+#include "inc/IR_brick.h"
 
-#include <inc/Preston/hero.h>
+#include <inc/PS_hero.h>
 
-#include "inc/Isaac/floor.h"
-#include "inc/Preston/enemybat.h"
-#include "inc/Isaac/collectible.h"
+#include "inc/IR_floor.h"
+#include "inc/PS_enemybat.h"
+#include "inc/IR_collectible.h"
 #include <QDebug>
 #include <QMessageBox>
 

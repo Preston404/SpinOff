@@ -1,4 +1,4 @@
-#include "inc/Isaac/parallaxbackground.h"
+#include "inc/IR_parallaxbackground.h"
 #include <QDebug>
 
 ParallaxBackground::ParallaxBackground(int x, int y ) : Brick(x,y, ":images/background.png"){

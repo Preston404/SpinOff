@@ -1,4 +1,4 @@
-#include "inc/Preston/hero.h"
+#include "inc/PS_hero.h"
 #include <QDebug>
 
 Hero::Hero(int x, int y ) : GameCharacter(x,y){

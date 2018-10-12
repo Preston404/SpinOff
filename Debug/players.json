@@ -6,6 +6,13 @@
             "name": "Preston",
             "password": "password",
             "score": 0
+        },
+        {
+            "ID": 1539277033,
+            "currentlevel": 1,
+            "name": "Preston",
+            "password": "pass",
+            "score": 0
         }
     ]
 }

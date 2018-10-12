@@ -1,7 +1,7 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "brick.h"
+#include "inc/IR_brick.h"
 class Floor : public Brick
 {
 public:

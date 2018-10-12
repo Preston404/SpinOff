@@ -1,4 +1,4 @@
-#include "inc/Isaac/floor.h"
+#include "inc/IR_floor.h"
 #include <QDebug>
 
 Floor::Floor(int x, int y, QString picture) : Brick(x,y, picture){

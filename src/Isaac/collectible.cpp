@@ -1,4 +1,4 @@
-#include "inc/Isaac/collectible.h"
+#include "inc/IR_collectible.h"
 #include <QDebug>
 
 collectible::collectible(int x, int y, QString p) : Brick(x,y,p){

@@ -1,9 +1,9 @@
-#include <inc/Abdulla/gameengine.h>
+#include <inc/AA_gameengine.h>
 #include <QApplication>
 #include <QDebug>
 #include <QRect>
 #include <QTimer>
-#include "inc/Abdulla/gamemodel.h"
+#include "inc/AA_gamemodel.h"
 #include <QString>
 
 
@@ -334,6 +334,12 @@ void GameEngine::movementHero()
     {
         intersectCollectible(i);
     }
+
+    for(int i = 0; i< model->getEnemyBat()->length(); i++)
+    {
+        model->getHero()->attack_intersect(model->getEnemyBat()->at(i)->getRect());
+    }
+
 }
 
 void GameEngine::moveBrick(int x,Brick * b)

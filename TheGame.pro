@@ -41,21 +41,21 @@ SOURCES += \
     src/Isaac/collectible.cpp
 
 HEADERS += \
-        inc/Abdulla/mainwindow.h \
-    inc/Abdulla/mainwindow.h \
-    inc/Baoying/player.h \
-    inc/Baoying/dialogloadplayer.h \
-    inc/Baoying/dialogcreateplayer.h \
-    inc/Isaac/brick.h \
-    inc/Isaac/floor.h \
-    inc/Abdulla/gameengine.h \
-    inc/Abdulla/gamemodel.h \
-    inc/Isaac/parallaxbackground.h \
-    inc/Preston/gamecharacter.h \
-    inc/Preston/enemybat.h \
-    inc/Preston/hero.h \
-    inc/Isaac/painthelper.h \
-    inc/Isaac/collectible.h
+        inc/AA_mainwindow.h \
+    inc/AA_mainwindow.h \
+    inc/BL_player.h \
+    inc/BL_dialogloadplayer.h \
+    inc/BL_dialogcreateplayer.h \
+    inc/IR_brick.h \
+    inc/IR_floor.h \
+    inc/AA_gameengine.h \
+    inc/AA_gamemodel.h \
+    inc/IR_parallaxbackground.h \
+    inc/PS_gamecharacter.h \
+    inc/PS_enemybat.h \
+    inc/PS_hero.h \
+    inc/IR_painthelper.h \
+    inc/IR_collectible.h
 
 FORMS += \
         inc/Abdulla/mainwindow.ui \

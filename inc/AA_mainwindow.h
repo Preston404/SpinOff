@@ -2,15 +2,15 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include <QGraphicsView>
-#include <inc/Baoying/dialogloadplayer.h>
-#include <inc/Baoying/dialogcreateplayer.h>
+#include <inc/BL_dialogloadplayer.h>
+#include <inc/BL_dialogcreateplayer.h>
 #include <QMessageBox>
 #include <QDateTime>
 #include <QDate>
 #include <QPainter>
 #include <QLayout>
 
-#include "inc/Abdulla/gameengine.h"
+#include "inc/AA_gameengine.h"
 
 namespace Ui {
 class MainWindow;

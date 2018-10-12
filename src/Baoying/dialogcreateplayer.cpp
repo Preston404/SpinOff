@@ -1,4 +1,4 @@
-#include "inc/Baoying/dialogcreateplayer.h"
+#include "inc/BL_dialogcreateplayer.h"
 #include "ui_dialogcreateplayer.h"
 
 DialogCreatePlayer::DialogCreatePlayer(QWidget *parent) :   QDialog(parent),  ui(new Ui::DialogCreatePlayer){

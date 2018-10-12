@@ -4,7 +4,7 @@
 #include <QImage>
 #include <QRect>
 #include <QString>
-#include "painthelper.h"
+#include "IR_painthelper.h"
 
 
 //Base class for many objects in the game, think of it a building unit

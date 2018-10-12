@@ -1,4 +1,4 @@
-#include "inc/Abdulla/mainwindow.h"
+#include "inc/AA_mainwindow.h"
 #include <QApplication>
 #include <QException>
 #include <QtDebug>

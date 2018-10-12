@@ -15,9 +15,9 @@ INPUT(
 ./debug\painthelper.o
 ./debug\collectible.o
 ./debug\qrc_GameRes.o
-./debug\moc_mainwindow.o
-./debug\moc_player.o
-./debug\moc_dialogloadplayer.o
-./debug\moc_dialogcreateplayer.o
-./debug\moc_gameengine.o
+./debug\moc_AA_mainwindow.o
+./debug\moc_BL_player.o
+./debug\moc_BL_dialogloadplayer.o
+./debug\moc_BL_dialogcreateplayer.o
+./debug\moc_AA_gameengine.o
 );
