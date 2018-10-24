@@ -2,14 +2,19 @@
 #define Hero_H
 
 #include <QDebug>
+#include <QTimer>
 #include "inc/PS_gamecharacter.h"
+#include <QObject>
+#include <QVariant>
 
-class Hero : public GameCharacter
+class Hero : public QObject, public GameCharacter
 {
-public:
 
+    Q_OBJECT
+
+public:
     Hero(int, int);
-    ~Hero();
+    ~Hero(){}
 
     bool intersectTop(QRect );
     bool intersectBottom(QRect );
@@ -23,10 +28,31 @@ public:
         this->isHurted = hurt;
     }
 
+    void startAttackSword();
+
+    bool getSwordAttack();
+
+    bool getIsAttackingSword(){
+        return isAttackingSword;
+    }
+
+    QTimer* timer;
+    int ms_time;
+    int max_timer_count = 10000;
+    int attack_duration_ms = 500;
+    bool coolDown = false;
 
 private:
-
+    bool inAttackProcess = false;
+    int t_end_attack = -1;
+    int t = 0;
     bool isHurted = false;
+    bool isAttackingSword = false;
+    bool isCoolingDown = false;
+    int t_end_coolDown = 0;
+
+public slots:
+    void on_100_ms();
 
 };
 

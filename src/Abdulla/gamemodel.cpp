@@ -17,6 +17,7 @@ GameModel::GameModel(){
     this->background = new QList<ParallaxBackground *>;
     this->BricksToDraw = new QList<Brick*> ;
     this->TheHero = new Hero(200, 340);
+
     QFile LevelFile(":Level_1.txt");
     if(LevelFile.open(QIODevice::ReadOnly)){
         QTextStream in (&LevelFile);

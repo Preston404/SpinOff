@@ -20,4 +20,5 @@ INPUT(
 ./debug\moc_BL_dialogloadplayer.o
 ./debug\moc_BL_dialogcreateplayer.o
 ./debug\moc_AA_gameengine.o
+./debug\moc_PS_hero.o
 );

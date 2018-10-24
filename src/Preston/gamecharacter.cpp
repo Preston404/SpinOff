@@ -10,6 +10,7 @@ GameCharacter::GameCharacter(int x, int y){
     isMovingR=false;
     isMovingL=false;
     isJumping=false;
+
 }
 
 
@@ -57,3 +58,5 @@ bool GameCharacter::attack_intersect(QRect r)
         return false;
     }
 }
+
+

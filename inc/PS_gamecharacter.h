@@ -111,7 +111,8 @@ public:
 
 
     //return current frame in the animation
-    int getCurrentFrame() {
+    int getCurrentFrame()
+    {
         return currentFrame;
     }
     void setCurrentFrame(int frame) {

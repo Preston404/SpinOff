@@ -36,8 +36,8 @@ GameEngine::~GameEngine(){
 void GameEngine::timerEvent(QTimerEvent *){
     //Debugging helper
     QString ff = QString::number(this->model->getMapPos());
-    qDebug(QString::number(this->model->getMapPos()).toStdString().c_str());
-    //
+    //qDebug(QString::number(this->model->getMapPos()).toStdString().c_str());
+    QString::number(this->model->getMapPos()).toStdString().c_str();
 
     if(this->Completed()){
         this->stopGame();
@@ -335,6 +335,7 @@ void GameEngine::movementHero()
         intersectCollectible(i);
     }
 
+    //
     for(int i = 0; i< model->getEnemyBat()->length(); i++)
     {
         model->getHero()->attack_intersect(model->getEnemyBat()->at(i)->getRect());
@@ -403,7 +404,7 @@ void GameEngine::moveXHero(int y)
         x -= Brick::speed;
     else if( !intersectRightHero(0) && model->getHero()->getRect().x()<=350  && getIsMovingR())
         x += Brick::speed;
-    if( !intersectRightHero(0)&& model->getHero()->getRect().x()>=350  && getIsMovingR() ) {
+    if( !intersectRightHero(0) && model->getHero()->getRect().x()>=350  && getIsMovingR() ) {
         moveMap=true;
     }
     else
@@ -512,9 +513,18 @@ void GameEngine::intersectXBatEnemy(int i)
         {
             model->getEnemyBat()->at(i)->setMoveX(!model->getEnemyBat()->at(i)->getMoveX());
         }
+        // Kill bat with sword attack
+
+        if(getModel()->getHero()->getIsAttackingSword()){
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+            return;
+        }
+
 
         this->model->getHero()->setIsHurted(true);
     }
+
+
 }
 
 void GameEngine::intersectYBatEnemy(int i){

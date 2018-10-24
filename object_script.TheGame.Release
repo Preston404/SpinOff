@@ -20,4 +20,5 @@ INPUT(
 ./release\moc_BL_dialogloadplayer.o
 ./release\moc_BL_dialogcreateplayer.o
 ./release\moc_AA_gameengine.o
+./release\moc_PS_hero.o
 );

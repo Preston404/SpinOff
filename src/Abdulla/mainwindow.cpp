@@ -175,6 +175,7 @@ void MainWindow::UpdateFrame(GameEngine* eng)
         eng->getModel()->getCollectibles()->at(i)->accept(pVisitor);
     }
 
+
     eng->getModel()->getHero()->setRect(QRect(eng->getModel()->getHero()->getRect().x(), eng->getModel()->getHero()->getRect().y(), 45, eng->getModel()->getHero()->getMoveRSprite().height() - 7));
     eng->getModel()->getHero()->setSrcRect(QRect(eng->getModel()->getHero()->getCurrentFrame()+6, 1, eng->getModel()->getHero()->getRect().width(), eng->getModel()->getHero()->getRect().height()));
     eng->getModel()->getHero()->accept(pVisitor);
@@ -189,6 +190,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             this->Engine->setIsMovingL(true);
         else if(event->key() == Qt::Key_Down && this->Engine->getIsJumping())
             this->Engine->setIsAttacking(true);
+        else if(event->key() == Qt::Key_A)
+        {
+            this->Engine->getModel()->getHero()->startAttackSword();
+        }
         else if(event->key() == Qt::Key_Space && this->Engine->intersectBottomHero(0)) {
             this->Engine->setIsJumping(true);
             this->Engine->setXRelative(-100);

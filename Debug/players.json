@@ -1,14 +1,7 @@
 {
     "PlayersArray": [
         {
-            "ID": 1539054320,
-            "currentlevel": 1,
-            "name": "Preston",
-            "password": "password",
-            "score": 0
-        },
-        {
-            "ID": 1539277033,
+            "ID": 1539733383,
             "currentlevel": 1,
             "name": "Preston",
             "password": "pass",
