@@ -1,9 +1,8 @@
 #include "inc/PS_hero.h"
+#include <QKeyEvent>
 #include <QDebug>
-#include <QTimer>
-#include <QObject>
 
-Hero::Hero(int x, int y ) : GameCharacter(x,y){
+Hero::Hero(int x, int y) : GameCharacter(x,y){
     this->moveRSprite = QPixmap(":images/hero_walk_sprites.png");
     this->moveLSprite = QPixmap(":images/hero_walk_sprites_left.png");
     this->stopSprite = QPixmap(":images/hero_idle.png");
@@ -12,6 +11,10 @@ Hero::Hero(int x, int y ) : GameCharacter(x,y){
     this->timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(on_100_ms()));
     this->timer->start(100);
+
+    this->timer2 = new QTimer();
+    connect(timer2, SIGNAL(timeout()), this, SLOT(on_10_ms()));
+    this->timer2->start(10);
 
 
 }
@@ -48,16 +51,23 @@ void Hero::on_100_ms(){
     ms_time += 100;
     //qDebug("1 second");
     //qDebug() << QVariant(ms_time).toString();
+
+
     if(getSwordAttack()){
-        qDebug("Attacking");
+        //qDebug("Attacking");
     }
     else{
-        qDebug("Not Attacking");
+        //qDebug("Not Attacking");
     }
     if(ms_time >= max_timer_count)
     {
         ms_time = 0;
     }
+}
+
+void Hero::on_10_ms()
+{
+    //test_keys();
 }
 
 void Hero::startAttackSword(){

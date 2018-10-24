@@ -10,6 +10,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainW
     this->Model = new GameModel();
     //Link engine with model and viewport
     this->Engine = new GameEngine(this->Model, ui->widgetV);
+
+#ifdef TEST_KEYS
+    this->timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(testKeys()));
+    this->timer->start(1);
+#endif
+
 }
 
 MainWindow::~MainWindow(){
@@ -215,5 +222,38 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event){
         this->Engine->setIsMovingL(false);
     else
         event->ignore();
+}
+
+void MainWindow::testKeys()
+{
+    static int counter = 0;
+    static bool start = false;
+    counter += 1;
+    if(counter >= 15000){
+        counter = 0;
+        start = true;
+    }
+    if(counter % 10 == 0 && start){
+        qDebug("Testing Keys");
+    }
+    if(start)
+    {
+        if(false){
+            this->Engine->setIsMovingL(true);
+        }
+        else{
+            this->Engine->setIsMovingR(true);
+        }
+        if(this->Engine->getIsJumping()){
+            this->Engine->setIsAttacking(true);
+        }
+
+        this->Engine->getModel()->getHero()->startAttackSword();
+
+        if(this->Engine->intersectBottomHero(0)) {
+            this->Engine->setIsJumping(true);
+            this->Engine->setXRelative(-100);
+        }
+    }
 }
 

@@ -9,8 +9,14 @@
 #include <QDate>
 #include <QPainter>
 #include <QLayout>
-
+#include <QTimer>
 #include "inc/AA_gameengine.h"
+
+// This macro makes the game compile in key testing mode
+// Key testing mode will give 15 seconds to load a player and start a
+// game and then it will simulate spamming all keyboard inputs (except "left button") at 1000 times per second
+// The player is invincible in key test mode
+//#define TEST_KEYS // <- uncomment this macro to run key test mode
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +34,7 @@ public:
 
     //The player currently using the game
     Player* ActivePlayer = nullptr;
+    QTimer* timer;
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -41,6 +48,7 @@ private slots:
     void UpdateFrame(GameEngine* eng);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
+    void testKeys();
 
 private:
     Ui::MainWindow *ui;

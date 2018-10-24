@@ -7,6 +7,7 @@
 #include <QObject>
 #include <QVariant>
 
+
 class Hero : public QObject, public GameCharacter
 {
 
@@ -37,10 +38,12 @@ public:
     }
 
     QTimer* timer;
+    QTimer* timer2;
     int ms_time;
     int max_timer_count = 10000;
     int attack_duration_ms = 500;
     bool coolDown = false;
+
 
 private:
     bool inAttackProcess = false;
@@ -53,6 +56,7 @@ private:
 
 public slots:
     void on_100_ms();
+    void on_10_ms();
 
 };
 

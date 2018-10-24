@@ -43,7 +43,7 @@ bool GameCharacter::attack_intersect(QRect r)
     getRect().getCoords(&top_left_x, &top_left_y, &bottom_right_x, &bottom_right_y);
 
     QPoint top_left = QPoint(top_left_x - 50, top_left_y - 50);
-    QPoint bottom_right = QPoint(bottom_right_x + 50, bottom_right_y);
+    QPoint bottom_right = QPoint(bottom_right_x + 50, bottom_right_y + 50);
 
     attack_range.setTopLeft(top_left);
     attack_range.setBottomRight(bottom_right);

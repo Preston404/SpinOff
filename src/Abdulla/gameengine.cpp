@@ -1,4 +1,5 @@
 #include <inc/AA_gameengine.h>
+#include "inc/AA_mainwindow.h"
 #include <QApplication>
 #include <QDebug>
 #include <QRect>
@@ -514,12 +515,15 @@ void GameEngine::intersectXBatEnemy(int i)
             model->getEnemyBat()->at(i)->setMoveX(!model->getEnemyBat()->at(i)->getMoveX());
         }
         // Kill bat with sword attack
-
+#ifdef TEST_KEYS
+        model->getEnemyBat()->at(i)->setDestroyed(true);
+        return;
+#else
         if(getModel()->getHero()->getIsAttackingSword()){
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
         }
-
+#endif
 
         this->model->getHero()->setIsHurted(true);
     }
