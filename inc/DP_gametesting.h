@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QString>
+#include <QScriptEngine>
 
 class gametesting : public QWidget
 {
