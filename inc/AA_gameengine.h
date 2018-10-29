@@ -39,6 +39,8 @@ public:
     bool PlayerExists(QString name, QString Password);
     //Get a player from the list by ID
     Player* GetPlayerbyID(int ID);
+    //Returns true if gameStarted is true
+    bool isStarted();
     //Get a player from the list by name and password
     Player* GetPlayer(QString Name, QString Password);
     //Stops the game
