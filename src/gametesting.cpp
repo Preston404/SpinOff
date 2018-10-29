@@ -4,22 +4,34 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QWidget>
+#include <QScriptClass>
+
 gametesting::gametesting(QWidget *parent) : QWidget(parent)
 {
+    set_m_script_name("LEVEL ONE DEATH RUN");
 }
 
 
 void gametesting::run_script()
 {
-    if(m_script_name == "LEVEL ONE DEATH RUN")
+    if(m_script_name.isEmpty())
     {
+        return;
+    }
+    else
+    {
+        QScriptEngine engine;
+        if(m_script_name == "LEVEL ONE DEATH RUN")
+        {
 
 
+        }
+        else if(m_script_name == "LEVEL ONE WIN RUN")
+        {
+
+        }
     }
-    else if(m_script_name == "LEVEL ONE WIN RUN")
-    {
-  
-    }
+
 }
 void gametesting::create_demo_menu(QMainWindow* mw){
 
@@ -55,6 +67,7 @@ void gametesting::set_m_main_window(MainWindow *mw){
     m_main_window = mw;
 }
 
+//expeditions unknown      josh gates   dshcs 278
 void gametesting::on_run_demo_button_clicked()
 {
     if(!m_main_window->Engine->isStarted())
