@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += script
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,7 +39,8 @@ SOURCES += \
     src/Preston/enemybat.cpp \
     src/Preston/hero.cpp \
     src/Isaac/painthelper.cpp \
-    src/Isaac/collectible.cpp
+    src/Isaac/collectible.cpp \
+    src/gametesting.cpp
 
 HEADERS += \
         inc/AA_mainwindow.h \
@@ -55,7 +57,8 @@ HEADERS += \
     inc/PS_enemybat.h \
     inc/PS_hero.h \
     inc/IR_painthelper.h \
-    inc/IR_collectible.h
+    inc/IR_collectible.h \
+    inc/DP_gametesting.h
 
 FORMS += \
         inc/Abdulla/mainwindow.ui \
