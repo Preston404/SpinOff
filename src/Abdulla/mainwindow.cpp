@@ -1,4 +1,5 @@
 #include "inc/AA_mainwindow.h"
+#include "inc/DP_gametesting.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
 #include <QString>
@@ -10,6 +11,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainW
     this->Model = new GameModel();
     //Link engine with model and viewport
     this->Engine = new GameEngine(this->Model, ui->widgetV);
+    
+    gametesting g;
+    g.set_m_main_window(this);
+    g.create_demo_menu(this);
 
 #ifdef TEST_KEYS
     this->timer = new QTimer();
