@@ -55,7 +55,6 @@ void gametesting::set_m_main_window(MainWindow *mw){
     m_main_window = mw;
 }
 
-//expeditions unknown      josh gates   dshcs 278
 void gametesting::on_run_demo_button_clicked()
 {
     if(!m_main_window->Engine->isStarted())
