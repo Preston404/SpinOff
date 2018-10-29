@@ -67,7 +67,14 @@ void GameEngine::startGame(){
     }
     this->timerId = startTimer(15);
 }
-
+//Return true if the gameStarted member is true
+bool GameEngine::isStarted()
+{
+    if(gameStarted == true)
+        return true;
+    else
+        return false;
+}
 //----------------------------------------------------------------------------------------------------------------//
 //The available players who were created previously are loaded and saved to an JSON file
 //we call this on the applications start up
