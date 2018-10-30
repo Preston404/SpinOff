@@ -15,6 +15,6 @@
         <file>Level_1_block_overload.txt</file>
         <file>Level_1_enemy_overload.txt</file>
         <file>Level_2.txt</file>
-        <file>Level_1_coin_overload</file>
+        <file>Level_1_coin_overload.txt</file>
     </qresource>
 </RCC>
