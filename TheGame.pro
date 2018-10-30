@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += script
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -68,4 +67,9 @@ FORMS += \
 RESOURCES += \
     GameRes.qrc
 
-DISTFILES +=
+DISTFILES += \
+    Level_1.txt \
+    Level_1_block_overload.txt \
+    Level_1_enemies_overload.txt \
+    Level_2.txt \
+    Level_1_coin_overload.txt
