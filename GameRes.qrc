@@ -12,5 +12,9 @@
         <file>images/hero_idle.png</file>
         <file>images/coin.png</file>
         <file>Level_1_tst.txt</file>
+        <file>Level_1_block_overload.txt</file>
+        <file>Level_1_enemy_overload.txt</file>
+        <file>Level_2.txt</file>
+        <file>Level_1_coin_overload</file>
     </qresource>
 </RCC>
