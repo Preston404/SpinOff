@@ -1,0 +1,7 @@
+1. Within the Qt project directory, navigate to the "SpinOff\Debug" directory
+2. Try to lauch the executable "TheGame"
+3. If there is an error then you need to copy some missing .dll files to the directory
+4. Copy all .dll files from "\Qt\5.11.1\your_compiler\bin" to "SpinOff\Debug"
+    4.1 You can find out what compiler you are using in Qt under the projects tab, on the left side of the screen under "Build and Run"
+5. Lauch "TheGame" by clicking on the executable
+6. Attempt to delete all the copied .dll files while the game is running. Keep the ones that are in use by the gane.
