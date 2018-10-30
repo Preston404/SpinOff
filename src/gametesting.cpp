@@ -48,7 +48,7 @@ void gametesting::create_demo_menu(QMainWindow* mw){
     //Create the demo mode button
     m_demo_button = new QPushButton("Demo Mode", mw);
     //set size and location of the button
-    m_demo_button->setGeometry(QRect(QPoint(10,520),QSize(100,50)));
+    m_demo_button->setGeometry(QRect(QPoint(10,530),QSize(100,50)));
 
     //connect button signal to appropriate slot
     m_demo_menu = new QWidget(mw);
