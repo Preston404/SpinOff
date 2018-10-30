@@ -4,7 +4,7 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QWidget>
-#include <QScriptClass>
+#include <QtScript>
 
 gametesting::gametesting(QWidget *parent) : QWidget(parent)
 {
@@ -21,9 +21,19 @@ void gametesting::run_script()
     else
     {
         QScriptEngine engine;
+        
         if(m_script_name == "LEVEL ONE DEATH RUN")
         {
-
+            QFile scriptFile("leveloned.txt");
+            if(scriptFile.open(QIODevice::ReadOnly))
+            {
+                qDebug() << "leveloned.txt unable to be read"<< endl;
+            }
+            QTextStream stream(&scriptFile);
+            QString contents = stream.readAll();
+            scriptFile.close();
+            engine.evaluate(contents, "leveloned.txt");
+            qDebug() << "Code in run_script() was executed" << endl;
 
         }
         else if(m_script_name == "LEVEL ONE WIN RUN")
@@ -58,8 +68,8 @@ void gametesting::create_demo_menu(QMainWindow* mw){
     m_run_script_button->setGeometry(QRect(QPoint(130, 200), QSize(100, 35)));
 
     QObject::connect(m_run_script_button, SIGNAL(clicked()), this, SLOT(on_run_demo_button_clicked()));
-    qDebug() << "something";
-
+    qDebug() << "Something in create_demo_menu()" << endl;
+    this->run_script();
 
 }
 
@@ -68,8 +78,10 @@ void gametesting::set_m_main_window(MainWindow *mw){
 }
 
 
+
 void gametesting::on_run_demo_button_clicked()
 {
+    qDebug() << "Something in on_run_demo_button_clicked()" << endl;
     if(!m_main_window->Engine->isStarted())
     {
             QMessageBox *Msgbox = new QMessageBox(this);
@@ -106,6 +118,8 @@ void gametesting::on_run_demo_button_clicked()
 
 void gametesting::set_m_script_name(QString input)
 {
+    qDebug()<< "In set_m_script_name(input)" <<endl;
+
     if(input == "LEVEL ONE WIN RUN" || input == "LEVEL ONE DEATH RUN")
     {    
 	m_script_name = input;
