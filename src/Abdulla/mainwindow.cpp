@@ -12,9 +12,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainW
     //Link engine with model and viewport
     this->Engine = new GameEngine(this->Model, ui->widgetV);
     
-    gametesting g;
-    g.set_m_main_window(this);
-    g.create_demo_menu(this);
+    GameTesting g;
+    g.SetAMainWindow(this);
+    g.CreateDemoMenu(this);
 
 #ifdef TEST_KEYS
     this->timer = new QTimer();
