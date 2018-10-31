@@ -9,29 +9,29 @@
 #include <QString>
 #include <QScriptEngine>
 
-class gametesting : public QWidget
+class GameTesting : public QWidget
 {
     Q_OBJECT
 public:
-    void create_demo_menu(QMainWindow * mw);
-    explicit gametesting(QWidget *parent = nullptr);
-    void set_m_script_name(QString input);
-    void run_script();
-    void set_m_main_window(MainWindow * mw);
+    void CreateDemoMenu(QMainWindow * mw);
+    explicit GameTesting(QWidget *parent = nullptr);
+    void SetAScriptName(QString input);
+    void RunScript();
+    void SetAMainWindow(MainWindow * mw);
 
 signals:
 
 public slots:
-    void on_run_demo_button_clicked();
+    void OnRunDemoButtonClicked();
 
 private:
-    QPushButton * m_demo_button;
-    QCheckBox * m_level_one_d_check;
-    QCheckBox * m_level_one_w_check;
-    QPushButton * m_run_script_button;
-    QWidget * m_demo_menu;
-    QString m_script_name;
-    MainWindow * m_main_window;
+    QPushButton * aDemoButton;
+    QCheckBox * aLevelOneDCheck;
+    QCheckBox * aLevelOneWCheck;
+    QPushButton * aRunDemoButton;
+    QWidget * aDemoMenu;
+    QString aScriptName;
+    MainWindow * aMainWindow;
 
 };
 
