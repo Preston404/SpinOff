@@ -2,6 +2,8 @@
 #include <QKeyEvent>
 #include <QDebug>
 
+// Testing
+
 Hero::Hero(int x, int y) : GameCharacter(x,y){
     this->moveRSprite = QPixmap(":images/hero_walk_sprites.png");
     this->moveLSprite = QPixmap(":images/hero_walk_sprites_left.png");
