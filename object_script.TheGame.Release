@@ -14,6 +14,7 @@ INPUT(
 ./release\hero.o
 ./release\painthelper.o
 ./release\collectible.o
+./release\gametesting.o
 ./release\qrc_GameRes.o
 ./release\moc_AA_mainwindow.o
 ./release\moc_BL_player.o
@@ -21,4 +22,5 @@ INPUT(
 ./release\moc_BL_dialogcreateplayer.o
 ./release\moc_AA_gameengine.o
 ./release\moc_PS_hero.o
+./release\moc_DP_gametesting.o
 );

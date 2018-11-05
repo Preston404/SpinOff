@@ -36,6 +36,12 @@ public:
         this->rect = rect;
     }
 
+    QPixmap getAttackRSprite() {
+        return attackRSprite;
+    }
+    QPixmap getAttackLSprite() {
+        return attackLSprite;
+    }
 
     //The rectangle used to represent the sprite of this character when it's moving to the RIGHT
     QPixmap getMoveRSprite() {
@@ -120,6 +126,8 @@ public:
     }
 
 protected:
+    QPixmap attackRSprite;
+    QPixmap attackLSprite;
     QPixmap moveRSprite;
     QPixmap moveLSprite;
     QPixmap stopSprite;

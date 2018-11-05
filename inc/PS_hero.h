@@ -6,6 +6,7 @@
 #include "inc/PS_gamecharacter.h"
 #include <QObject>
 #include <QVariant>
+#include <QSound>
 
 
 class Hero : public QObject, public GameCharacter

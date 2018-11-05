@@ -6,11 +6,13 @@
 
 QT       += core gui
 QT       += script
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = TheGame
 TEMPLATE = app
+
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -73,4 +75,6 @@ DISTFILES += \
     Level_1_block_overload.txt \
     Level_1_enemies_overload.txt \
     Level_2.txt \
-    Level_1_coin_overload.txt
+    Level_1_coin_overload.txt \
+    background_8bit.wav \
+    grunt_sound.wav

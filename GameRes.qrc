@@ -16,5 +16,7 @@
         <file>Level_1_enemies_overload.txt</file>
         <file>Level_2.txt</file>
         <file>Level_1_coin_overload.txt</file>
+        <file>images/hero_attacking_left.png</file>
+        <file>images/hero_attacking_right.png</file>
     </qresource>
 </RCC>

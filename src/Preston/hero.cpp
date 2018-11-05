@@ -2,9 +2,10 @@
 #include <QKeyEvent>
 #include <QDebug>
 
-// Testing
 
 Hero::Hero(int x, int y) : GameCharacter(x,y){
+    this->attackRSprite = QPixmap(":images/hero_attacking_right.png");
+    this->attackLSprite = QPixmap(":images/hero_attacking_left.png");
     this->moveRSprite = QPixmap(":images/hero_walk_sprites.png");
     this->moveLSprite = QPixmap(":images/hero_walk_sprites_left.png");
     this->stopSprite = QPixmap(":images/hero_idle.png");
@@ -74,6 +75,8 @@ void Hero::on_10_ms()
 
 void Hero::startAttackSword(){
     if(!inAttackProcess){
+        QSound::play("grunt_sound.wav");
+        setIsAttacking(true);
         t_end_attack = ms_time + attack_duration_ms;
         t_end_coolDown = ms_time + attack_duration_ms * 2;
         isCoolingDown = false;
@@ -97,6 +100,7 @@ bool Hero::getSwordAttack(){
             if(ms_time >= t_end_attack){
                 t_end_attack = -1;
                 isAttackingSword = false;
+                setIsAttacking(false);
                 isCoolingDown = true;
                 return false;
             }
@@ -112,6 +116,7 @@ bool Hero::getSwordAttack(){
                 if(ms_time + max_timer_count >= t_end_attack){
                     t_end_attack = -1;
                     isAttackingSword = false;
+                    setIsAttacking(false);
                     isCoolingDown = true;
                     return false;
                 }

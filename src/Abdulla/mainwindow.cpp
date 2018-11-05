@@ -12,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainW
     //Link engine with model and viewport
     this->Engine = new GameEngine(this->Model, ui->widgetV);
     
+    QSound* s = new QSound("background_8bit.wav");
+    s->setLoops(QSound::Infinite);
+    s->play();
+
     GameTesting g;
     g.SetAMainWindow(this);
     g.CreateDemoMenu(this);
@@ -200,13 +204,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
             this->Engine->setIsMovingR(true);
         else if(event->key() == Qt::Key_Left)
             this->Engine->setIsMovingL(true);
-        else if(event->key() == Qt::Key_Down && this->Engine->getIsJumping())
-            this->Engine->setIsAttacking(true);
+        // Use the key 'a' to attack instead
+        //else if(event->key() == Qt::Key_Down && this->Engine->getIsJumping())
+        //    this->Engine->setIsAttacking(true);
         else if(event->key() == Qt::Key_A)
         {
             this->Engine->getModel()->getHero()->startAttackSword();
         }
-        else if(event->key() == Qt::Key_Space && this->Engine->intersectBottomHero(0)) {
+        else if((event->key() == Qt::Key_Space || event->key() == Qt::Key_Up) && this->Engine->intersectBottomHero(0)) {
             this->Engine->setIsJumping(true);
             this->Engine->setXRelative(-100);
         }
