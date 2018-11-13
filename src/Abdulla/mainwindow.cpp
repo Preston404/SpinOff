@@ -266,4 +266,32 @@ void MainWindow::testKeys()
         }
     }
 }
+void MainWindow::on_actionHelp_triggered(){
+    QMessageBox m(this);
+    m.setWindowTitle("Help");
+    m.setText("  Help");
+    m.setInformativeText("Right arrow: move forward.\nLeft arrow: move backward.\nUp arrow + whitespace: jump.\nA: use weapon");
+    m.exec();
+}
+void MainWindow::on_actionManual_triggered(){
+    QMessageBox m(this);
+    m.setWindowTitle("Manual");
+    m.setText("\t User's Manual");
+    m.setInformativeText("Description\n"
+                         "\nSpinoff is a side scrolling platformer action-adventure "
+                         "game developed by QTeam Developers. The evil villain Lowser has conquered the Fungus Kingdom using black magic "
+                         "and imprisoned the only person who can break the spell, Princess Leach. You (Dario) must save the kingdom by "
+                         "rescuing Princess Leach and breaking Lowser’s spell.\n\n"
+                         "How to play\n"
+                         "\nMove Left: Left Arrow Key\n"
+                         "Move Right: Right Arrow Key\n"
+                         "Jump: Space Bar\n"
+                         "Sword Attack: ‘A’ Key\n\n"
+                         "Goal\n"
+                         "\nComplete levels by jumping across platforms and fighting enemies before confronting and defeating the final boss.\n"
+                         );
+    //m.setIconPixmap(QPixmap("./manual.png"));
+    m.show();
+    m.exec();
+}
 

@@ -47,7 +47,7 @@
      <x>0</x>
      <y>0</y>
      <width>1021</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">
@@ -59,7 +59,16 @@
     <addaction name="separator"/>
     <addaction name="actionNew_Game"/>
    </widget>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionManual"/>
+    <addaction name="actionScore"/>
+   </widget>
    <addaction name="menuGame"/>
+   <addaction name="menuMenu"/>
   </widget>
   <action name="action_New_Player">
    <property name="text">
@@ -74,6 +83,21 @@
   <action name="actionNew_Game">
    <property name="text">
     <string>New Game</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionManual">
+   <property name="text">
+    <string>Manual</string>
+   </property>
+  </action>
+  <action name="actionScore">
+   <property name="text">
+    <string>Score</string>
    </property>
   </action>
  </widget>
