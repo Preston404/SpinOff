@@ -52,6 +52,10 @@ private slots:
     void keyReleaseEvent(QKeyEvent *event);
     void testKeys();
 
+    void on_actionHelp_triggered();
+
+    void on_actionManual_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
