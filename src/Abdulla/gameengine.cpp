@@ -47,6 +47,7 @@ void GameEngine::timerEvent(QTimerEvent *){
     }
 
     movementHero();
+    movementBoss();
     getModel()->brickClipping();
     hurted();
     GameOver();
@@ -351,6 +352,65 @@ void GameEngine::movementHero()
 
 }
 
+void GameEngine::movementBoss()
+{
+    static int tempMove = 0;
+    int len = model->getBossList()->length();
+    for(int i = 0; i < len; i++){
+        Boss* bossPtr = model->getBossList()->at(i);
+        if(model->getHero()->getRect().x() < bossPtr->getRect().x()){
+            bossPtr->setIsMovingL(true);
+            bossPtr->setIsMovingR(false);
+        }
+        else{
+            bossPtr->setIsMovingL(false);
+            bossPtr->setIsMovingR(true);
+        }
+        if(bossPtr->getIsMovingR() && !intersectRightBoss(0, bossPtr)){
+            moveXBoss(bossPtr->getRect().y(), bossPtr);
+        }
+        else if(bossPtr->getIsMovingL() && !intersectLeftBoss(0,bossPtr)){
+            moveXBoss(bossPtr->getRect().y(), bossPtr);
+        }
+        // Running Animation
+        if(bossPtr->getIsMovingR() && tempMove == 1)
+        {
+            for(int i=0; i<57; i++)
+            {
+                bossPtr->setCurrentFrame(bossPtr->getCurrentFrame() + 1);
+            }
+            if (bossPtr->getCurrentFrame() >= 1190 )
+            {
+                bossPtr->setCurrentFrame(0);
+            }
+            tempMove = 0;
+        }
+        else if(bossPtr->getIsMovingR())
+        {
+            tempMove++;
+        }
+        else if(bossPtr->getIsMovingL() && tempMove == 1)
+        {
+            for(int i=0; i<57; i++)
+            {
+                bossPtr->setCurrentFrame(bossPtr->getCurrentFrame() - 1);
+            }
+            if (bossPtr->getCurrentFrame() <= 0 )
+            {
+                bossPtr->setCurrentFrame(1191);
+            }
+            tempMove = 0;
+        }
+        else if(bossPtr->getIsMovingL())
+        {
+            tempMove++;
+        }
+    }
+
+
+}
+
+
 void GameEngine::moveBrick(int x,Brick * b)
 {
     int speed;
@@ -418,6 +478,19 @@ void GameEngine::moveXHero(int y)
     else
         moveMap=false;
     model->getHero()->move(x,y);
+}
+
+void GameEngine::moveXBoss(int y, Boss* b)
+{
+    int x = b->getRect().x();
+
+    if(!intersectLeftBoss(0, b) /*&& model->getBoss()->getRect().x()>=2*/ && b->getIsMovingL() ){
+        x -= (Brick::speed * 1) / 4;
+    }
+    else if( !intersectRightBoss(0, b) /*&& model->getBoss()->getRect().x()<= 800*/  && b->getIsMovingR()){
+        x += (Brick::speed * 1) / 4;
+    }
+    b->move(x,y);
 }
 //----------------------------------------------------------------------------------------------------------------//
 bool GameEngine::intersectTopHero(int i)
@@ -499,11 +572,85 @@ bool GameEngine::intersectRightHero(int i)
 }
 
 
+bool GameEngine::intersectLeftBoss(int i, Boss* b)
+{
+    // Recursively Check each possible item to be intersected with
+    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size() || i<model->getBossList()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size())
+        {
+            if(b->intersectLeft(model->getFloors()->at(i)->getRect()))
+                return true;
+        }
+        /*if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
+        {
+            if(b->intersectLeft(model->getEnemyBat()->at(i)->getRect()))
+                return true;
+        }*/
+        if(!model->getBossList()->empty() && i<model->getBossList()->size())
+        {
+            if(b->intersectLeft(model->getBossList()->at(i)->getRect()))
+                return true;
+        }
+        if(b->intersectLeft(model->getHero()->getRect())){
+            b->startAttackSword();
+            if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
+                model->getHero()->setIsHurted(true);
+            }
+            else{
+                b->setIsHurted(true);
+            }
+            return true;
+        }
+        intersectLeftBoss(i+1, b);
+    }
+    else
+        return false;
+}
+
+bool GameEngine::intersectRightBoss(int i, Boss* b)
+{
+    // Recursively Check each possible item to be intersected with
+    if(i<model->getFloors()->size() || i<model->getEnemyBat()->size() || i<model->getBossList()->size())
+    {
+        if(!model->getFloors()->empty() && i<model->getFloors()->size() )
+        {
+            if(b->intersectRight(model->getFloors()->at(i)->getRect()))
+                return true;
+        }
+        /*if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
+        {
+            if(b->intersectRight(model->getEnemyBat()->at(i)->getRect()))
+                return true;
+        }*/
+        if(!model->getBossList()->empty() && i<model->getBossList()->size())
+        {
+            if(b->intersectRight(model->getBossList()->at(i)->getRect()))
+                return true;
+        }
+        if(b->intersectRight(model->getHero()->getRect())){
+            b->startAttackSword();
+            if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
+                model->getHero()->setIsHurted(true);
+            }
+            else{
+                b->setIsHurted(true);
+            }
+            return true;
+        }
+        intersectLeftBoss(i+1, b);
+        intersectRightBoss(i+1, b);
+    }
+    else
+        return false;
+}
+
+
 void GameEngine::intersectXBatEnemy(int i)
 {
     if(!model->getEnemyBat()->at(i)->isDestroyed() &&
           (model->getEnemyBat()->at(i)->intersectRight(model->getHero()->getRect()) ||
-           model->getEnemyBat()->at(i)->intersectLeft(model->getHero()->getRect())))
+           model->getEnemyBat()->at(i)->intersectLeft(model->getHero()->getRect()) ))
     {
 
         if(!model->getHero()->getIsMovingR() &&
@@ -526,7 +673,7 @@ void GameEngine::intersectXBatEnemy(int i)
         model->getEnemyBat()->at(i)->setDestroyed(true);
         return;
 #else
-        if(getModel()->getHero()->getIsAttackingSword()){
+        if(getModel()->getHero()->getIsAttacking()){
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
         }
@@ -534,6 +681,7 @@ void GameEngine::intersectXBatEnemy(int i)
 
         this->model->getHero()->setIsHurted(true);
     }
+
 
 
 }

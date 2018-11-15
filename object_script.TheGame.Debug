@@ -15,6 +15,7 @@ INPUT(
 ./debug\painthelper.o
 ./debug\collectible.o
 ./debug\gametesting.o
+./debug\boss.o
 ./debug\qrc_GameRes.o
 ./debug\moc_AA_mainwindow.o
 ./debug\moc_BL_player.o
@@ -23,4 +24,5 @@ INPUT(
 ./debug\moc_AA_gameengine.o
 ./debug\moc_PS_hero.o
 ./debug\moc_DP_gametesting.o
+./debug\moc_PS_boss.o
 );

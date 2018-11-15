@@ -1,5 +1,5 @@
-#ifndef Hero_H
-#define Hero_H
+#ifndef BOSS_H
+#define BOSS_H
 
 #include <QDebug>
 #include <QTimer>
@@ -9,14 +9,14 @@
 #include <QSound>
 
 
-class Hero : public QObject, public GameCharacter
+class Boss : public QObject, public GameCharacter
 {
 
     Q_OBJECT
 
 public:
-    Hero(int, int);
-    ~Hero(){}
+    Boss(int, int);
+    ~Boss(){}
 
     bool intersectTop(QRect );
     bool intersectBottom(QRect );
@@ -32,19 +32,37 @@ public:
 
     void startAttackSword();
 
+    bool getSwordAttack();
+
+    bool getIsAttackingSword(){
+        return isAttackingSword;
+    }
+
     QTimer* timer;
     QTimer* timer2;
     int ms_time;
-
+    int max_timer_count = 10000;
+    int attack_duration_ms = 500;
+    bool coolDown = false;
 
 
 private:
+    bool inAttackProcess = false;
+    int t_end_attack = -1;
+    int t = 0;
     bool isHurted = false;
+    bool isAttackingSword = false;
+    bool isCoolingDown = false;
+    int t_end_coolDown = 0;
+    int action_ms = 3000;
+    int max_action_ms = 1000;
 
 public slots:
     void on_100_ms();
-    void on_10_ms();
+    void on_50_ms();
 
 };
 
-#endif
+
+
+#endif // BOSS_H

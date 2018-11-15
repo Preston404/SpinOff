@@ -42,7 +42,8 @@ SOURCES += \
     src/Preston/hero.cpp \
     src/Isaac/painthelper.cpp \
     src/Isaac/collectible.cpp \
-    src/gametesting.cpp
+    src/gametesting.cpp \
+    src/Preston/boss.cpp
 
 HEADERS += \
         inc/AA_mainwindow.h \
@@ -60,7 +61,8 @@ HEADERS += \
     inc/PS_hero.h \
     inc/IR_painthelper.h \
     inc/IR_collectible.h \
-    inc/DP_gametesting.h
+    inc/DP_gametesting.h \
+    inc/PS_boss.h
 
 FORMS += \
         inc/Abdulla/mainwindow.ui \

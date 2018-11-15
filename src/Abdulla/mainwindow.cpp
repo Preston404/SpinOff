@@ -190,7 +190,19 @@ void MainWindow::UpdateFrame(GameEngine* eng)
             eng->getModel()->getCollectibles()->at(i)->moveBrick();
         eng->getModel()->getCollectibles()->at(i)->accept(pVisitor);
     }
-
+    for(int i = 0; i<eng->getModel()->getBossList()->size(); i++) {
+        Boss* bossPtr = eng->getModel()->getBossList()->at(i);
+        if(bossPtr->getIsHurted()){
+            continue;
+        }
+        if(eng->getMoveMap()){
+            QRect* bossRectPtr = bossPtr->getRectPtr();
+            bossRectPtr->moveTo(bossRectPtr->left()-Brick::speed, bossRectPtr->top());
+        }
+        bossPtr->setRect(QRect(bossPtr->getRect().x(), bossPtr->getRect().y(), 45, bossPtr->getMoveRSprite().height() - 7));
+        bossPtr->setSrcRect(QRect(bossPtr->getCurrentFrame() + 6, 1, bossPtr->getRect().width(), bossPtr->getRect().height()));
+        bossPtr->accept(pVisitor);
+    }
 
     eng->getModel()->getHero()->setRect(QRect(eng->getModel()->getHero()->getRect().x(), eng->getModel()->getHero()->getRect().y(), 45, eng->getModel()->getHero()->getMoveRSprite().height() - 7));
     eng->getModel()->getHero()->setSrcRect(QRect(eng->getModel()->getHero()->getCurrentFrame()+6, 1, eng->getModel()->getHero()->getRect().width(), eng->getModel()->getHero()->getRect().height()));
@@ -248,12 +260,7 @@ void MainWindow::testKeys()
     }
     if(start)
     {
-        if(false){
-            this->Engine->setIsMovingL(true);
-        }
-        else{
-            this->Engine->setIsMovingR(true);
-        }
+        this->Engine->setIsMovingR(true);
         if(this->Engine->getIsJumping()){
             this->Engine->setIsAttacking(true);
         }

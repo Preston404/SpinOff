@@ -10,6 +10,8 @@
 #include "inc/IR_parallaxbackground.h"
 #include "inc/PS_enemybat.h"
 #include "inc/IR_collectible.h"
+#include "inc/PS_boss.h"
+
 class Floor;
 class Hero;
 class Brick;
@@ -25,7 +27,9 @@ public:
     void brickClipping();
     //returns the current hero character
     Hero *getHero() {                            return TheHero;       }
+    Boss *getBoss() {                            return TheBoss;       }
     QList<Brick*> *getBricksToDraw() {           return BricksToDraw;  }
+    QList<Boss*> *getBossList() {           return bossList;  }
     //List of floor bricks
     QList<Floor*> *getFloors() {                 return floors;        }
     QList<ParallaxBackground*> *getBackground() {return background;    }
@@ -51,7 +55,9 @@ private:
     //List of enemy bats
     QList<EnemyBat *> *enemyBat;
     QList<collectible *> *collectibles;
+    QList<Boss *> *bossList;
     Hero *TheHero;
+    Boss *TheBoss;
     //6 text lines which represent the bricks in the game
     QList<QChar> LINE_a; QList<QChar> LINE_b; QList<QChar> LINE_c;
     QList<QChar> LINE_d; QList<QChar> LINE_e; QList<QChar> LINE_f;

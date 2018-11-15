@@ -49,8 +49,10 @@ public:
     void startGame();
     //Computation and logic for the Hero movement during the game, called on each update of the game frames
     void movementHero();
+    void movementBoss();
     //Move the character on the X axis, Right or Left, here we decide how much percentage !
     void moveXHero(int );
+    void moveXBoss(int , Boss* );
     void moveBrick(int,Brick *);
     //Is the game over or NOT ?
     bool GameOver();
@@ -64,6 +66,9 @@ public:
     bool intersectRightHero(int );
     bool intersectLeftHero(int );
     void intersectGoldHero(int );
+
+    bool intersectRightBoss(int, Boss* );
+    bool intersectLeftBoss(int, Boss* );
 
     void intersectYBatEnemy(int );
     void intersectXBatEnemy(int );

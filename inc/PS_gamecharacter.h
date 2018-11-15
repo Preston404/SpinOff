@@ -26,6 +26,10 @@ public:
     QRect getRect() {
         return rect;
     }
+    QRect* getRectPtr(){
+        return &rect;
+    }
+
     void setSrcRect(QRect srcRect) {
         this->srcRect = srcRect;
     }

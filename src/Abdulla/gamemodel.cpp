@@ -2,6 +2,8 @@
 #include "inc/IR_brick.h"
 
 #include <inc/PS_hero.h>
+#include <inc/PS_boss.h>
+
 
 #include "inc/IR_floor.h"
 #include "inc/PS_enemybat.h"
@@ -14,6 +16,7 @@ GameModel::GameModel(){
     this->floors = new QList<Floor *>;
     this->enemyBat=new QList<EnemyBat *>;
     this->collectibles = new QList<collectible *>;
+    this->bossList = new QList<Boss *>;
     this->background = new QList<ParallaxBackground *>;
     this->BricksToDraw = new QList<Brick*> ;
     this->TheHero = new Hero(200, 340);
@@ -131,7 +134,11 @@ void GameModel::createBrick(QList<QChar> l,int num,int x) {
     else if(myChar == '9') {
         collectible* d = new collectible(x+brickSize, GameViewHeight-num*brickSize,":images/coin.png");
         collectibles->append(d);
-        qDebug("Found a coin");
+        return;
+    }
+    else if(myChar == '6') {
+        Boss* b = new Boss(x, 340);
+        bossList->append(b);
         return;
     }
 }
