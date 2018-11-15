@@ -344,7 +344,6 @@ void GameEngine::movementHero()
         intersectCollectible(i);
     }
 
-    //
     for(int i = 0; i< model->getEnemyBat()->length(); i++)
     {
         model->getHero()->attack_intersect(model->getEnemyBat()->at(i)->getRect());
@@ -354,7 +353,6 @@ void GameEngine::movementHero()
 
 void GameEngine::movementBoss()
 {
-    //static int tempMove = 0;
     int len = model->getBossList()->length();
     for(int i = 0; i < len; i++){
         Boss* bossPtr = model->getBossList()->at(i);
@@ -487,10 +485,10 @@ void GameEngine::moveXBoss(int y, Boss* b)
 {
     int x = b->getRect().x();
 
-    if(!intersectLeftBoss(0, b) /*&& model->getBoss()->getRect().x()>=2*/ && b->getIsMovingL() ){
+    if(!intersectLeftBoss(0, b) && b->getIsMovingL() ){
         x -= (Brick::speed * 1) / 4;
     }
-    else if( !intersectRightBoss(0, b) /*&& model->getBoss()->getRect().x()<= 800*/  && b->getIsMovingR()){
+    else if( !intersectRightBoss(0, b) && b->getIsMovingR()){
         x += (Brick::speed * 1) / 4;
     }
     b->move(x,y);
@@ -545,7 +543,7 @@ bool GameEngine::intersectLeftHero(int i)
         }
         if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
         {
-            if(model->getHero()->intersectLeft(model->getEnemyBat()->at(i)->getRect()))
+            if( model->getHero()->intersectLeft(model->getEnemyBat()->at(i)->getRect()) )
                 return true;
         }
         intersectLeftHero(i+1);
@@ -565,7 +563,7 @@ bool GameEngine::intersectRightHero(int i)
         }
         if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
         {
-            if(model->getHero()->intersectRight(model->getEnemyBat()->at(i)->getRect()))
+            if(model->getHero()->intersectRight(model->getEnemyBat()->at(i)->getRect()) )
                 return true;
         }
         intersectRightHero(i+1);
@@ -582,17 +580,13 @@ bool GameEngine::intersectLeftBoss(int i, Boss* b)
     {
         if(!model->getFloors()->empty() && i<model->getFloors()->size())
         {
-            if(b->intersectLeft(model->getFloors()->at(i)->getRect()))
+            if(b->intersectLeft(model->getFloors()->at(i)->getRect()) &&
+                    model->getFloors()->at(i)->getRect().top() > b->getRectPtr()->bottom() + 25)
                 return true;
         }
-        /*if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
-        {
-            if(b->intersectLeft(model->getEnemyBat()->at(i)->getRect()))
-                return true;
-        }*/
         if(!model->getBossList()->empty() && i<model->getBossList()->size())
         {
-            if(b->intersectLeft(model->getBossList()->at(i)->getRect()))
+            if(b->intersectLeft(model->getBossList()->at(i)->getRect()) && !model->getBossList()->at(i)->getIsHurted())
                 return true;
         }
         if(b->intersectLeft(model->getHero()->getRect())){
@@ -621,14 +615,9 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
             if(b->intersectRight(model->getFloors()->at(i)->getRect()))
                 return true;
         }
-        /*if(!model->getEnemyBat()->empty() && i<model->getEnemyBat()->size())
-        {
-            if(b->intersectRight(model->getEnemyBat()->at(i)->getRect()))
-                return true;
-        }*/
         if(!model->getBossList()->empty() && i<model->getBossList()->size())
         {
-            if(b->intersectRight(model->getBossList()->at(i)->getRect()))
+            if(b->intersectRight(model->getBossList()->at(i)->getRect()) && !model->getBossList()->at(i)->getIsHurted())
                 return true;
         }
         if(b->intersectRight(model->getHero()->getRect())){

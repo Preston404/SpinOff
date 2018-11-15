@@ -35,7 +35,7 @@ public:
     QTimer* timer;
     QTimer* timer2;
     int ms_time;
-
+    int tempMove = 0;
 
 
 private:
