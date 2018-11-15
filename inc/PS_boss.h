@@ -44,6 +44,7 @@ public:
     int max_timer_count = 10000;
     int attack_duration_ms = 500;
     bool coolDown = false;
+    int tempMove = 0;
 
 
 private:

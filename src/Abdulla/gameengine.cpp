@@ -354,10 +354,13 @@ void GameEngine::movementHero()
 
 void GameEngine::movementBoss()
 {
-    static int tempMove = 0;
+    //static int tempMove = 0;
     int len = model->getBossList()->length();
     for(int i = 0; i < len; i++){
         Boss* bossPtr = model->getBossList()->at(i);
+        if(bossPtr->getIsHurted()){
+            continue;
+        }
         if(model->getHero()->getRect().x() < bossPtr->getRect().x()){
             bossPtr->setIsMovingL(true);
             bossPtr->setIsMovingR(false);
@@ -373,7 +376,7 @@ void GameEngine::movementBoss()
             moveXBoss(bossPtr->getRect().y(), bossPtr);
         }
         // Running Animation
-        if(bossPtr->getIsMovingR() && tempMove == 1)
+        if(bossPtr->getIsMovingR() && bossPtr->tempMove == 1)
         {
             for(int i=0; i<57; i++)
             {
@@ -383,13 +386,13 @@ void GameEngine::movementBoss()
             {
                 bossPtr->setCurrentFrame(0);
             }
-            tempMove = 0;
+            bossPtr->tempMove = 0;
         }
         else if(bossPtr->getIsMovingR())
         {
-            tempMove++;
+            bossPtr->tempMove++;
         }
-        else if(bossPtr->getIsMovingL() && tempMove == 1)
+        else if(bossPtr->getIsMovingL() && bossPtr->tempMove == 1)
         {
             for(int i=0; i<57; i++)
             {
@@ -399,11 +402,11 @@ void GameEngine::movementBoss()
             {
                 bossPtr->setCurrentFrame(1191);
             }
-            tempMove = 0;
+            bossPtr->tempMove = 0;
         }
         else if(bossPtr->getIsMovingL())
         {
-            tempMove++;
+            bossPtr->tempMove++;
         }
     }
 
