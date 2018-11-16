@@ -1,10 +1,14 @@
 #include "inc/BL_dialogloadplayer.h"
 #include "ui_dialogloadplayer.h"
 #include <QMessageBox>
-
+#include<QPixmap>
 
 DialogLoadPlayer::DialogLoadPlayer(QWidget *parent) :  QDialog(parent),  ui(new Ui::DialogLoadPlayer){
     ui->setupUi(this);
+    QPixmap pix(":/MyImage/imgs/SpinOff.jpg");
+    int w = ui->pic->width();
+    int h = ui->pic->height();
+    ui->pic->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
 }
 
 DialogLoadPlayer::~DialogLoadPlayer(){

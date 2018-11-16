@@ -1,8 +1,13 @@
 #include "inc/BL_dialogcreateplayer.h"
 #include "ui_dialogcreateplayer.h"
+#include<QPixmap>
 
 DialogCreatePlayer::DialogCreatePlayer(QWidget *parent) :   QDialog(parent),  ui(new Ui::DialogCreatePlayer){
     ui->setupUi(this);
+    QPixmap pix(":/MyImage/imgs/SpinOff.jpg");
+    int w = ui->pic->width();
+    int h = ui->pic->height();
+    ui->pic->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
 }
 
 DialogCreatePlayer::~DialogCreatePlayer(){
