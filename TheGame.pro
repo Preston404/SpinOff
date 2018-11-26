@@ -42,7 +42,7 @@ SOURCES += \
     src/Preston/hero.cpp \
     src/Isaac/painthelper.cpp \
     src/Isaac/collectible.cpp \
-    src/gametesting.cpp \
+    src/Dustin/gametesting.cpp \
     src/Preston/boss.cpp
 
 HEADERS += \
