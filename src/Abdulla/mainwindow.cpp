@@ -16,9 +16,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainW
     s->setLoops(QSound::Infinite);
     s->play();
 
-    GameTesting g;
-    g.SetAMainWindow(this);
-    g.CreateDemoMenu(this);
 
 #ifdef TEST_KEYS
     this->timer = new QTimer();
@@ -32,14 +29,7 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked(){
-    //Create a new global game engine that will stay alive during the life of this application
-    //this->Model = new GameModel();
-    //this->Engine = new GameEngine(this->Model, this->Viewport);
-    this->ActivePlayer = this->Engine->GetPlayer( "TopHat", "Hermit");
-    //this->Engine->LoadPlayersFile();
-    //this->Engine->SavePlayersFile();
-}
+
 
 
 //New player menu is clicked !
@@ -256,7 +246,6 @@ void MainWindow::testKeys()
         start = true;
     }
     if(counter % 10 == 0 && start){
-        qDebug("Testing Keys");
     }
     if(start)
     {
@@ -271,6 +260,36 @@ void MainWindow::testKeys()
             this->Engine->setIsJumping(true);
             this->Engine->setXRelative(-100);
         }
+    }
+    if(this->Engine->isStarted()== false){
+        delete this->timer;
+    }
+}
+void MainWindow::LooseRun(){
+    static int counter = 0;
+    static bool start = false;
+    counter += 1;
+    if(counter >= 15000){
+        counter = 0;
+        start = true;
+    }
+    if(counter % 10 == 0 && start){
+    }
+    if(start)
+    {
+        this->Engine->setIsMovingR(true);
+        if(this->Engine->getIsJumping()){
+        }
+
+
+        if(this->Engine->intersectBottomHero(0)) {
+            this->Engine->setIsJumping(true);
+            this->Engine->setXRelative(-100);
+        }
+    }
+
+    if(this->Engine->isStarted() == false){
+        delete this->timer;
     }
 }
 void MainWindow::on_actionHelp_triggered(){
@@ -300,5 +319,19 @@ void MainWindow::on_actionManual_triggered(){
     //m.setIconPixmap(QPixmap("./manual.png"));
     m.show();
     m.exec();
+}
+
+void MainWindow::on_actionWin_Script_triggered()
+{
+    GameTesting g;
+    g.SetAMainWindow(this);
+    g.OnWinScriptSelected();
+}
+
+void MainWindow::on_actionLoose_Script_triggered()
+{
+    GameTesting g;
+    g.SetAMainWindow(this);
+    g.OnLooseScriptSelected();
 }
 
