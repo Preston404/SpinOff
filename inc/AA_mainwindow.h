@@ -38,11 +38,12 @@ public:
     Player* ActivePlayer = nullptr;
     QTimer* timer;
 
+public slots:
+    void LooseRun();
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 private slots:
-    void on_pushButton_clicked();
     void on_action_New_Player_triggered();
     void on_action_Load_Player_triggered();
     void on_actionNew_Game_triggered();
@@ -55,6 +56,11 @@ private slots:
     void on_actionHelp_triggered();
 
     void on_actionManual_triggered();
+
+
+    void on_actionWin_Script_triggered();
+
+    void on_actionLoose_Script_triggered();
 
 private:
     Ui::MainWindow *ui;
