@@ -263,6 +263,12 @@ void MainWindow::testKeys()
     }
     if(this->Engine->isStarted()== false){
         delete this->timer;
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Win script successful !");
+        Msgbox->exec();
+        delete Msgbox;
     }
 }
 void MainWindow::LooseRun(){
@@ -290,6 +296,12 @@ void MainWindow::LooseRun(){
 
     if(this->Engine->isStarted() == false){
         delete this->timer;
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Loose script successful !");
+        Msgbox->exec();
+        delete Msgbox;
     }
 }
 void MainWindow::on_actionHelp_triggered(){
