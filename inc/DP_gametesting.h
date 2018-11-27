@@ -13,24 +13,15 @@ class GameTesting : public QWidget
 {
     Q_OBJECT
 public:
-    void CreateDemoMenu(QMainWindow * mw);
     explicit GameTesting(QWidget *parent = nullptr);
-    void SetAScriptName(QString input);
-    void RunScript();
     void SetAMainWindow(MainWindow * mw);
 
 signals:
 
 public slots:
-    void OnRunDemoButtonClicked();
-
+    void OnWinScriptSelected();
+    void OnLooseScriptSelected();
 private:
-    QPushButton * aDemoButton;
-    QCheckBox * aLevelOneDCheck;
-    QCheckBox * aLevelOneWCheck;
-    QPushButton * aRunDemoButton;
-    QWidget * aDemoMenu;
-    QString aScriptName;
     MainWindow * aMainWindow;
 
 };
