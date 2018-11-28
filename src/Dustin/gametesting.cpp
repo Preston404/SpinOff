@@ -36,7 +36,7 @@ void GameTesting::OnLooseScriptSelected(){
         QMessageBox *Msgbox = new QMessageBox(this);
         Msgbox->setIcon(QMessageBox::Critical);
         Msgbox->setGeometry(300, 400, 200, 50);
-        Msgbox->setText("The Script will start in 15 seconds !");
+        Msgbox->setText("The Script will start in 15 seconds !\nUnless, of course, you just ran a script !");
         Msgbox->exec();
         delete Msgbox;
     }
@@ -64,7 +64,7 @@ void GameTesting::OnWinScriptSelected(){
         QMessageBox *Msgbox = new QMessageBox(this);
         Msgbox->setIcon(QMessageBox::Critical);
         Msgbox->setGeometry(300, 400, 200, 50);
-        Msgbox->setText("The Script will start in 15 seconds !");
+        Msgbox->setText("The Script will start in 15 seconds !\n Unless, of course, you just ran a script !");
         Msgbox->exec();
         delete Msgbox;
 
