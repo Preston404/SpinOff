@@ -48,9 +48,20 @@
      <addaction name="actionWin_Script"/>
      <addaction name="actionLoose_Script"/>
     </widget>
+    <widget class="QMenu" name="menuLevel_Selector">
+     <property name="title">
+      <string>Level Selector</string>
+     </property>
+     <addaction name="actionLevel_1"/>
+     <addaction name="actionLevel_2"/>
+     <addaction name="actionEnemy_Overload"/>
+     <addaction name="actionBrick_Overload"/>
+     <addaction name="actionCoin_Overload"/>
+    </widget>
     <addaction name="action_New_Player"/>
     <addaction name="action_Load_Player"/>
     <addaction name="separator"/>
+    <addaction name="menuLevel_Selector"/>
     <addaction name="actionNew_Game"/>
     <addaction name="menuDemo_Mode"/>
    </widget>
@@ -103,6 +114,31 @@
   <action name="actionLoose_Script">
    <property name="text">
     <string>Loose Script</string>
+   </property>
+  </action>
+  <action name="actionLevel_1">
+   <property name="text">
+    <string>Level 1</string>
+   </property>
+  </action>
+  <action name="actionLevel_2">
+   <property name="text">
+    <string>Level 2</string>
+   </property>
+  </action>
+  <action name="actionEnemy_Overload">
+   <property name="text">
+    <string>Enemy Overload</string>
+   </property>
+  </action>
+  <action name="actionBrick_Overload">
+   <property name="text">
+    <string>Brick Overload</string>
+   </property>
+  </action>
+  <action name="actionCoin_Overload">
+   <property name="text">
+    <string>Coin Overload</string>
    </property>
   </action>
  </widget>
