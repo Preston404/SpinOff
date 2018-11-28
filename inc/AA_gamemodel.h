@@ -37,6 +37,10 @@ public:
     QList<EnemyBat*> *getEnemyBat() {            return enemyBat;      }
     QList<collectible*> *getCollectibles() {            return collectibles;      }
 
+    //Load level
+    void LoadLevel();
+    QString aLevelToLoad = ":Level_1.txt";
+
     //Announce the end of this level
     void AnnounceCompleted();
     //Game model constants

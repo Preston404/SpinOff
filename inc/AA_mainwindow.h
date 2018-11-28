@@ -58,10 +58,17 @@ private slots:
     void on_actionManual_triggered();
 
 
+    void on_actionCoin_Overload_triggered();
     void on_actionWin_Script_triggered();
 
     void on_actionLoose_Script_triggered();
 
+    void on_actionLevel_2_triggered();
+
+    void on_actionBrick_Overload_triggered();
+    void on_actionEnemy_Overload_triggered();
+
+    void on_actionLevel_1_triggered();
 private:
     Ui::MainWindow *ui;
 };

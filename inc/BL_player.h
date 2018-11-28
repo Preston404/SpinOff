@@ -19,7 +19,10 @@ public:
     int Score;
     //Current reached level in this game
     int CurrentLevel;
-
+    //levels completed
+    bool LevelOneCompleted = false;
+    //level to load
+    QString aLevelToLoad = ":Level_1.txt";
 signals:
 
 public slots:
