@@ -110,6 +110,80 @@ GameModel::~GameModel(){
 
 //-----------------------------------------------------------------------------------------------------------------//
 
+void GameModel::LoadLevel(){
+    QFile LevelFile(this->aLevelToLoad);
+    if(LevelFile.open(QIODevice::ReadOnly)){
+        QTextStream in (&LevelFile);
+        //delete previously loaded levels
+        LINE_a.clear();
+        LINE_b.clear();
+        LINE_c.clear();
+        LINE_d.clear();
+        LINE_e.clear();
+        LINE_f.clear();
+        FloorLimit = 0;
+        //Read the level file line by line
+        while(!in.atEnd()) {
+            QString stock = in.readLine();
+
+            //line starting with a is the bottom level
+            if (stock.left(1)=="a")     {
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_a.append(stock.at(i));
+                        FloorLimit++;                      }
+                }
+            }
+            else if (stock.left(1)=="b"){//one level higher than a
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_b.append(stock.at(i));        }
+                }
+            }
+            else if (stock.left(1)=="c"){//one level higher than b
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_c.append(stock.at(i));        }
+                }
+            }
+            else if (stock.left(1)=="d") {
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_d.append(stock.at(i));        }
+                }
+            }
+            else if (stock.left(1)=="e") {
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_e.append(stock.at(i));        }
+                }
+            }
+            else if (stock.left(1)=="f") {
+                for(int i=0; i<stock.size(); ++i) {
+                    if(stock.at(i).isDigit() || stock.at(i).isLetter()) {
+                        LINE_f.append(stock.at(i));         }
+                }
+            }
+        }
+        LevelFile.close();
+    }
+
+    //Create the floor bricks
+    for (int i=0; i<NbrBrickVisible; i++) {
+        Floor *k= new Floor(i*brickSize, GameViewHeight-brickSize, QString(":images/floor_bottom.png"));
+        floors->append(k);
+        Floor *k2= new Floor(i*brickSize, GameViewHeight-2*brickSize, QString(":images/floor_grass.png"));
+        floors->append(k2);         }
+
+    for (int i=0; i<NbrBrickVisible; i++) {
+        Brick *b=new Brick(i*brickSize,GameViewHeight+brickSize);
+        BricksToDraw->append(b);    }
+
+    //Create the background
+    for (int i=0; i<2; i++) {
+        ParallaxBackground* b = new ParallaxBackground(i*GameModel::GameViewWidth, 0);
+        background->append(b);      }
+}
 void GameModel::createBrick(QList<QChar> l,int num,int x) {
     QChar myChar = l.at(mapPosition);
 
@@ -193,6 +267,7 @@ void GameModel::AnnounceCompleted() {
     Msgbox->exec();
     delete Msgbox;
     qDebug("END OF LEVEL");
+
 }
 
 int GameModel::getMapPos(){

@@ -14,6 +14,8 @@ GameEngine::GameEngine(GameModel *m, QWidget *v) : QObject(){
     //Link model and viewport with engine
     this->model = m;
     this->viewport = v;
+    //active player is 0
+    this->ActivePlayer = 0;
     //game is not started yet
     gameStarted = false;
     //Used to apply a smooth landing with right and down arrows, can make jmps shorter or longer
@@ -41,6 +43,10 @@ void GameEngine::timerEvent(QTimerEvent *){
     QString::number(this->model->getMapPos()).toStdString().c_str();
 
     if(this->Completed()){
+        if(this->ActivePlayer->aLevelToLoad == ":Level_1.txt"){
+            this->ActivePlayer->LevelOneCompleted = true;
+            this->ActivePlayer->aLevelToLoad = ":Level_2.txt";
+        }
         this->stopGame();
         this->model->AnnounceCompleted();
         return;
@@ -238,6 +244,7 @@ Player *GameEngine::GetPlayer(QString Name, QString Password){
         //Compare password and name using case insensitive
         if((player->Name.compare(Name, Qt::CaseInsensitive) == 0 ) && (player->Password.compare(Password, Qt::CaseSensitive) == 0) )
         {
+            this->ActivePlayer = player;
             return player;
         }
 
