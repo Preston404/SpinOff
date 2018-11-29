@@ -24,11 +24,20 @@ public:
     bool intersectRight(QRect );
     bool intersectLeft(QRect );
 
+
     bool getIsHurted() {
         return isHurted;
     }
     void setIsHurted(bool hurt) {
         this->isHurted = hurt;
+    }
+    bool getHitCoolDown(){return hitCoolDown;}
+    void decrementHealth(){
+        health -= 1;
+        if(health == 0){
+            setIsHurted(true);
+        }
+        hitCoolDown = true;
     }
 
     void startAttackSword();
@@ -42,6 +51,8 @@ public:
 
 private:
     bool isHurted = false;
+    bool hitCoolDown = false;
+    int health = 3;
 
 
 public slots:

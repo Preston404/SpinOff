@@ -28,10 +28,10 @@ public:
     bool intersectRight(QRect );
     bool intersectLeft(QRect );
 
-    bool getIsHurted() {
+    bool getIsHurted(){
         return isHurted;
     }
-    void setIsHurted(bool hurt) {
+    void setIsHurted(bool hurt){
         this->isHurted = hurt;
     }
 

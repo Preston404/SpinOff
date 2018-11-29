@@ -51,6 +51,7 @@ void Boss::on_100_ms(){
     else if(getIsAttacking() && ms_time >= 500){
         setIsAttacking(false);
         ms_time += 100;
+        hitCoolDown = false;
     }
     else if(ms_time > 500 && ms_time <= 1000){
         ms_time += 100;
@@ -60,6 +61,8 @@ void Boss::on_100_ms(){
         ms_time = -1;
     }
 }
+
+
 
 
 void Boss::startAttackSword(){

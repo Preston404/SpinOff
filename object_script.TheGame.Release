@@ -16,6 +16,8 @@ INPUT(
 ./release\collectible.o
 ./release\gametesting.o
 ./release\boss.o
+./release\objectpool.o
+./release\createlevel.o
 ./release\qrc_GameRes.o
 ./release\moc_AA_mainwindow.o
 ./release\moc_BL_player.o

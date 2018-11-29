@@ -16,6 +16,8 @@ INPUT(
 ./debug\collectible.o
 ./debug\gametesting.o
 ./debug\boss.o
+./debug\objectpool.o
+./debug\createlevel.o
 ./debug\qrc_GameRes.o
 ./debug\moc_AA_mainwindow.o
 ./debug\moc_BL_player.o
