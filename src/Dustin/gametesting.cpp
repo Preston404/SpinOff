@@ -10,20 +10,21 @@
 //defines the uniqueinstance variable
 GameTesting * GameTesting::aUniqueInstance;
 
-//constructor sets aScriptName
+//constructor
 GameTesting::GameTesting(QWidget *parent) : QWidget(parent)
 {
 
 }
 
-//Gets an the singleton instance of Gametesting
+//Gets the singleton instance of Gametesting or creates a new instance
 GameTesting * GameTesting::GetInstance(){
+    //if there is no instance create one
     if(aUniqueInstance == nullptr){
         aUniqueInstance = new GameTesting();
     }
     return aUniqueInstance;
 }
-//Run Loose script
+//Runs Loose script
 void GameTesting::OnLooseScriptSelected(){
     //checks that there is a new game, if there is not a new game it prints an error
     if(!aMainWindow->Engine->isStarted())
