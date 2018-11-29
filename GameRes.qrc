@@ -16,6 +16,7 @@
         <file>Level_1_enemies_overload.txt</file>
         <file>Level_2.txt</file>
         <file>Level_1_coin_overload.txt</file>
+        <file>Randomly_Generated_Level.txt</file>
         <file>images/hero_attacking_left.png</file>
         <file>images/hero_attacking_right.png</file>
         <file>images/hero_attacking_left_shadow.png</file>
@@ -25,5 +26,7 @@
         <file>images/hero_walk_sprites_shadow.png</file>
         <file>images/peach.png</file>
         <file>images/Spinoff.PNG</file>
+        <file>images/RedXButton.png</file>
+        <file>images/play_green_round_button_4218.jpg</file>
     </qresource>
 </RCC>
