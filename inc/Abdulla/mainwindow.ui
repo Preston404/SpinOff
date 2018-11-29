@@ -107,11 +107,19 @@
    </property>
   </action>
   <action name="actionWin_Script">
+   <property name="icon">
+    <iconset resource="../../GameRes.qrc">
+     <normaloff>:/images/play_green_round_button_4218.jpg</normaloff>:/images/play_green_round_button_4218.jpg</iconset>
+   </property>
    <property name="text">
     <string>Win Script</string>
    </property>
   </action>
   <action name="actionLoose_Script">
+   <property name="icon">
+    <iconset resource="../../GameRes.qrc">
+     <normaloff>:/images/RedXButton.png</normaloff>:/images/RedXButton.png</iconset>
+   </property>
    <property name="text">
     <string>Loose Script</string>
    </property>
@@ -143,6 +151,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../GameRes.qrc"/>
+ </resources>
  <connections/>
 </ui>
