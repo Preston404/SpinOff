@@ -69,6 +69,10 @@ private slots:
     void on_actionEnemy_Overload_triggered();
 
     void on_actionLevel_1_triggered();
+    void on_actionRandomly_Generated_triggered();
+
+    void on_actionGenerate_a_New_Level_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

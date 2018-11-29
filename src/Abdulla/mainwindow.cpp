@@ -1,8 +1,12 @@
 #include "inc/AA_mainwindow.h"
 #include "inc/DP_gametesting.h"
+#include "inc/DP_createlevel.h"
+#include "inc/DP_objectpool.h"
 #include "ui_mainwindow.h"
 #include <QKeyEvent>
 #include <QString>
+
+class GameTesting;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainWindow){
     ui->setupUi(this);
@@ -335,20 +339,23 @@ void MainWindow::on_actionManual_triggered(){
     m.show();
     m.exec();
 }
-
+//Runs demo mode win script
 void MainWindow::on_actionWin_Script_triggered()
 {
-    GameTesting g;
-    g.SetAMainWindow(this);
-    g.OnWinScriptSelected();
+    GameTesting * g;
+    g = g->GetInstance();
+    g->SetAMainWindow(this);
+    g->OnWinScriptSelected();
 }
-
+//runs demo mode loose script
 void MainWindow::on_actionLoose_Script_triggered()
 {
-    GameTesting g;
-    g.SetAMainWindow(this);
-    g.OnLooseScriptSelected();
+    GameTesting * g;
+    g = g->GetInstance();
+    g->SetAMainWindow(this);
+    g->OnLooseScriptSelected();
 }
+//Loads Level 1
 void MainWindow::on_actionLevel_1_triggered()
 {
     if(this->Engine->ActivePlayer == 0){
@@ -381,6 +388,50 @@ void MainWindow::on_actionLevel_1_triggered()
     }
 
 }
+//Loads the randomly generated level
+void MainWindow::on_actionRandomly_Generated_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Randomly_Generated_Level.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Randomly_Generated_Level.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Your randomly generated level will be loaded !\nTo generate a new level go to Menu->Generate a New Level !\nIf you have not generated a level,"
+                            "Level 1 will load !\nPlease select New Game to play !");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
+}
+//generates a new random level
+void MainWindow::on_actionGenerate_a_New_Level_triggered()
+{
+    ObjectPool * objectpool = ObjectPool::getInstance();
+    CreateLevel * cl;
+    cl = objectpool->getResource();
+    cl->GenerateLevel();
+    objectpool->returnResource(cl);
+
+}
+//loads level 2
 void MainWindow::on_actionLevel_2_triggered()
 {
     if(this->Engine->ActivePlayer == 0){
@@ -422,7 +473,7 @@ void MainWindow::on_actionLevel_2_triggered()
 
 }
 
-
+//loads the enemy overload level
 void MainWindow::on_actionEnemy_Overload_triggered()
 {
     if(this->Engine->isStarted() == false){
@@ -454,7 +505,7 @@ void MainWindow::on_actionEnemy_Overload_triggered()
         delete Msgbox;
     }
 }
-
+//loads the brick overload level
 void MainWindow::on_actionBrick_Overload_triggered()
 {
     if(this->Engine->isStarted() == false){
@@ -486,7 +537,7 @@ void MainWindow::on_actionBrick_Overload_triggered()
         delete Msgbox;
     }
 }
-
+//loads the coin overload level
 void MainWindow::on_actionCoin_Overload_triggered()
 {
         if(this->Engine->isStarted() == false){

@@ -57,6 +57,7 @@
      <addaction name="actionEnemy_Overload"/>
      <addaction name="actionBrick_Overload"/>
      <addaction name="actionCoin_Overload"/>
+     <addaction name="actionRandomly_Generated"/>
     </widget>
     <addaction name="action_New_Player"/>
     <addaction name="action_Load_Player"/>
@@ -72,6 +73,7 @@
     <addaction name="actionHelp"/>
     <addaction name="actionManual"/>
     <addaction name="actionScore"/>
+    <addaction name="actionGenerate_a_New_Level"/>
    </widget>
    <addaction name="menuGame"/>
    <addaction name="menuMenu"/>
@@ -107,11 +109,19 @@
    </property>
   </action>
   <action name="actionWin_Script">
+   <property name="icon">
+    <iconset resource="../../GameRes.qrc">
+     <normaloff>:/images/play_green_round_button_4218.jpg</normaloff>:/images/play_green_round_button_4218.jpg</iconset>
+   </property>
    <property name="text">
     <string>Win Script</string>
    </property>
   </action>
   <action name="actionLoose_Script">
+   <property name="icon">
+    <iconset resource="../../GameRes.qrc">
+     <normaloff>:/images/RedXButton.png</normaloff>:/images/RedXButton.png</iconset>
+   </property>
    <property name="text">
     <string>Loose Script</string>
    </property>
@@ -141,8 +151,20 @@
     <string>Coin Overload</string>
    </property>
   </action>
+  <action name="actionGenerate_a_New_Level">
+   <property name="text">
+    <string>Generate a New Level</string>
+   </property>
+  </action>
+  <action name="actionRandomly_Generated">
+   <property name="text">
+    <string>Randomly Generated</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../GameRes.qrc"/>
+ </resources>
  <connections/>
 </ui>
