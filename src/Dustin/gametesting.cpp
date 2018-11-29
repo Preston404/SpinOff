@@ -7,12 +7,22 @@
 #include <QtScript>
 #include <QTimer>
 
+//defines the uniqueinstance variable
+GameTesting * GameTesting::aUniqueInstance;
 
 //constructor sets aScriptName
 GameTesting::GameTesting(QWidget *parent) : QWidget(parent)
 {
+
 }
 
+//Gets an the singleton instance of Gametesting
+GameTesting * GameTesting::GetInstance(){
+    if(aUniqueInstance == nullptr){
+        aUniqueInstance = new GameTesting();
+    }
+    return aUniqueInstance;
+}
 //Run Loose script
 void GameTesting::OnLooseScriptSelected(){
     //checks that there is a new game, if there is not a new game it prints an error
