@@ -13,8 +13,9 @@ class GameTesting : public QWidget
 {
     Q_OBJECT
 public:
-    explicit GameTesting(QWidget *parent = nullptr);
+
     void SetAMainWindow(MainWindow * mw);
+    static GameTesting * GetInstance();
 
 signals:
 
@@ -23,7 +24,8 @@ public slots:
     void OnLooseScriptSelected();
 private:
     MainWindow * aMainWindow;
-
+    static GameTesting * aUniqueInstance;
+    explicit GameTesting(QWidget *parent = nullptr);
 };
 
 
