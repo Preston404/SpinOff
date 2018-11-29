@@ -4,6 +4,8 @@
 #include <QKeyEvent>
 #include <QString>
 
+class GameTesting;
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),  ui(new Ui::MainWindow){
     ui->setupUi(this);
     qGuiApp->installEventFilter(this);
@@ -338,16 +340,18 @@ void MainWindow::on_actionManual_triggered(){
 
 void MainWindow::on_actionWin_Script_triggered()
 {
-    GameTesting g;
-    g.SetAMainWindow(this);
-    g.OnWinScriptSelected();
+    GameTesting * g;
+    g = g->GetInstance();
+    g->SetAMainWindow(this);
+    g->OnWinScriptSelected();
 }
 
 void MainWindow::on_actionLoose_Script_triggered()
 {
-    GameTesting g;
-    g.SetAMainWindow(this);
-    g.OnLooseScriptSelected();
+    GameTesting * g;
+    g = g->GetInstance();
+    g->SetAMainWindow(this);
+    g->OnLooseScriptSelected();
 }
 void MainWindow::on_actionLevel_1_triggered()
 {
