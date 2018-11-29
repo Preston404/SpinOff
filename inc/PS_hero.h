@@ -14,9 +14,14 @@ class Hero : public QObject, public GameCharacter
 
     Q_OBJECT
 
-public:
+private:
+    static Hero* instance;
     Hero(int, int);
+
+public:
     ~Hero(){}
+    static Hero* getInstance(int, int);
+    static Hero* getInstance();
 
     bool intersectTop(QRect );
     bool intersectBottom(QRect );
@@ -31,11 +36,11 @@ public:
     }
 
     void startAttackSword();
-
     QTimer* timer;
     QTimer* timer2;
     int ms_time;
     int tempMove = 0;
+    static Hero* clone(int x, int y);
 
 
 private:

@@ -22,6 +22,7 @@ class Brick{
         void setDestroyed(bool d) {     this->destroyed=d;        }
 
         QRect getRect();
+        QRect* getRectPtr(){return &(this->rect);}
         void setRect(QRect);
 
         //The image used to draw the derived class

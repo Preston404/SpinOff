@@ -259,6 +259,7 @@ Player *GameEngine::GetPlayer(QString Name, QString Password){
 void GameEngine::movementHero()
 {
     int y = model->getHero()->getRect().y();
+
     if(getIsJumping())
     {
         for(int i=0; i<4; ++i)
@@ -781,7 +782,7 @@ void GameEngine::hurted(){
 
 bool GameEngine::GameOver() {
     if(getModel()->getHero()->getLife() == 0 || getModel()->getHero()->getRect().y() > 500) {
-        qDebug("Game OVER");
+        //qDebug("Game OVER");
         return true;  }
     else
         return false;

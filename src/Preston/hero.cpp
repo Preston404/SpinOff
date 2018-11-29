@@ -2,6 +2,16 @@
 #include <QKeyEvent>
 #include <QDebug>
 
+Hero* Hero::instance;
+
+Hero* Hero::getInstance(int x, int y){
+    Hero::instance = new Hero(x, y);
+    return Hero::instance;
+}
+Hero* Hero::getInstance(){
+    return Hero::instance;
+}
+
 
 Hero::Hero(int x, int y) : GameCharacter(x,y){
     this->attackRSprite = QPixmap(":images/hero_attacking_right.png");
@@ -17,8 +27,6 @@ Hero::Hero(int x, int y) : GameCharacter(x,y){
     this->timer2 = new QTimer();
     connect(timer2, SIGNAL(timeout()), this, SLOT(on_10_ms()));
     this->timer2->start(10);
-
-
 }
 
 
@@ -77,6 +85,10 @@ void Hero::startAttackSword(){
         setIsAttacking(true);
 
     }
+}
+
+Hero* Hero::clone(int x, int y){
+    return getInstance(x,y);
 }
 
 

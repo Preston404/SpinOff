@@ -27,6 +27,7 @@ public:
     void brickClipping();
     //returns the current hero character
     Hero *getHero() {                            return TheHero;       }
+    //GameCharacter* getHero(){return TheHero;}
     Boss *getBoss() {                            return TheBoss;       }
     QList<Brick*> *getBricksToDraw() {           return BricksToDraw;  }
     QList<Boss*> *getBossList() {           return bossList;  }
@@ -61,6 +62,7 @@ private:
     QList<collectible *> *collectibles;
     QList<Boss *> *bossList;
     Hero *TheHero;
+    //GameCharacter* TheHero;
     Boss *TheBoss;
     //6 text lines which represent the bricks in the game
     QList<QChar> LINE_a; QList<QChar> LINE_b; QList<QChar> LINE_c;

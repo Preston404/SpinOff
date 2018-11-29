@@ -9,3 +9,8 @@ EnemyBat::EnemyBat(int x, int y) : Brick(x,y){
 EnemyBat::~EnemyBat() {
     qDebug("Enemy Bat deleted");
 }
+
+EnemyBat* EnemyBat::clone(int x, int y){
+    EnemyBat* b = new EnemyBat(x, y);
+    return b;
+};

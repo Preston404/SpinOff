@@ -14,6 +14,8 @@ public:
         p->PaintPixmap(this);
     }
     ~EnemyBat();
+
+    static EnemyBat* clone(int x, int y);
 };
 
 #endif

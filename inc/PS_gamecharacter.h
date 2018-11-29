@@ -14,6 +14,9 @@ public:
     GameCharacter(int, int);
     ~GameCharacter();
 
+    static Brick* factory(int x, int y);
+    static GameCharacter* factory(QString s, int x, int y);
+
     //whether the character is dead or not ?
     bool isDead() {
         return dead;
@@ -98,6 +101,14 @@ public:
     void setIsAttacking(bool is) {
         this->isAttacking = is;
     }
+
+    void startAttackSword(){}
+    void setIsHurted(bool b){}
+    bool getIsHurted(){return false;}
+    bool intersectTop(QRect r){return false;}
+    bool intersectBottom(QRect r){return false;}
+    bool intersectLeft(QRect r){return false;}
+    bool intersectRight(QRect r){return false;}
 
 
     void move(int, int);

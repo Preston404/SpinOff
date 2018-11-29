@@ -19,7 +19,9 @@ GameModel::GameModel(){
     this->bossList = new QList<Boss *>;
     this->background = new QList<ParallaxBackground *>;
     this->BricksToDraw = new QList<Brick*> ;
-    this->TheHero = new Hero(200, 340);
+    //this->TheHero = new Hero(200, 340);
+    //this->TheHero = Hero::getInstance(200, 340);
+    this->TheHero = (Hero*) GameCharacter::factory("hero", 200, 340);
 
     QFile LevelFile(":Level_1.txt");
     if(LevelFile.open(QIODevice::ReadOnly)){
@@ -195,7 +197,8 @@ void GameModel::createBrick(QList<QChar> l,int num,int x) {
         return;
     }
     else if(myChar == '4') {
-        EnemyBat* d= new EnemyBat(x+brickSize, GameViewHeight-num*brickSize);
+        //EnemyBat* d= new EnemyBat(x+brickSize, GameViewHeight-num*brickSize);
+        EnemyBat* d = (EnemyBat*) GameCharacter::factory(x+brickSize, GameViewHeight-num*brickSize);
         d->setMoveX(false);
         enemyBat->append(d);
         return;
@@ -211,8 +214,18 @@ void GameModel::createBrick(QList<QChar> l,int num,int x) {
         return;
     }
     else if(myChar == '6') {
-        Boss* b = new Boss(x, 340);
+        //Boss* b = new Boss(x, 340);
+        Boss* b = (Boss*) GameCharacter::factory("boss", x, 340);
         bossList->append(b);
+        return;
+    }
+    else if(myChar == '2'){
+        qDebug() << "Found Peach";
+        collectible* d = new collectible(x+brickSize, GameViewHeight-num*brickSize,":images/peach.png");
+        d->getRectPtr()->setSize(QSize(35,75));
+        d->getRectPtr()->setBottom(400);
+        d->getRectPtr()->setTop(345);
+        collectibles->append(d);
         return;
     }
 }

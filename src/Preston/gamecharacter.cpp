@@ -1,4 +1,7 @@
 #include "inc/PS_gamecharacter.h"
+#include "inc/PS_enemybat.h"
+#include "inc/PS_hero.h"
+#include "inc/PS_boss.h"
 #include <QDebug>
 #include <QRect>
 #include "stdio.h"
@@ -50,7 +53,7 @@ bool GameCharacter::attack_intersect(QRect r)
 
     if(r.intersects(attack_range))
     {
-        qDebug("In Attack Range");
+        //qDebug("In Attack Range");
         return true;
     }
     else
@@ -58,5 +61,24 @@ bool GameCharacter::attack_intersect(QRect r)
         return false;
     }
 }
+
+Brick* GameCharacter::factory(int x, int y)
+{
+    return EnemyBat::clone(x,y);
+}
+
+GameCharacter* GameCharacter::factory(QString s, int x, int y){
+    if(s == (QString) "hero"){
+        return Hero::clone(x,y);
+    }
+    else if(s == (QString) "boss"){
+        return Boss::clone(x,y);
+    }
+    else{
+        return nullptr;
+    }
+}
+
+
 
 

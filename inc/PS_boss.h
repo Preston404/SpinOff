@@ -9,6 +9,7 @@
 #include <QSound>
 
 
+
 class Boss : public QObject, public GameCharacter
 {
 
@@ -31,6 +32,7 @@ public:
     }
 
     void startAttackSword();
+    static Boss* clone(int x, int y);
 
     QTimer* timer;
     QTimer* timer2;

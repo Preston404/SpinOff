@@ -70,5 +70,9 @@ void Boss::startAttackSword(){
     }
 }
 
+Boss* Boss::clone(int x, int y){
+    return new Boss(x,y);
+}
+
 
 
