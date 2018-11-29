@@ -43,7 +43,9 @@ SOURCES += \
     src/Isaac/painthelper.cpp \
     src/Isaac/collectible.cpp \
     src/Dustin/gametesting.cpp \
-    src/Preston/boss.cpp
+    src/Preston/boss.cpp \
+    src/Dustin/objectpool.cpp \
+    src/Dustin/createlevel.cpp
 
 HEADERS += \
         inc/AA_mainwindow.h \
@@ -62,7 +64,9 @@ HEADERS += \
     inc/IR_painthelper.h \
     inc/IR_collectible.h \
     inc/DP_gametesting.h \
-    inc/PS_boss.h
+    inc/PS_boss.h \
+    inc/DP_objectpool.h \
+    inc/DP_createlevel.h
 
 FORMS += \
         inc/Abdulla/mainwindow.ui \
@@ -79,4 +83,5 @@ DISTFILES += \
     Level_2.txt \
     Level_1_coin_overload.txt \
     background_8bit.wav \
-    grunt_sound.wav
+    grunt_sound.wav \
+    Randomly_Generated_Level.txt
