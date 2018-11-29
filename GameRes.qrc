@@ -25,5 +25,6 @@
         <file>images/hero_walk_sprites_shadow.png</file>
         <file>images/peach.png</file>
         <file>images/Spinoff.PNG</file>
+        <file>images/RedXButton.png</file>
     </qresource>
 </RCC>
