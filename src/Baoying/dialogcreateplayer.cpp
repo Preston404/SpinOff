@@ -1,10 +1,10 @@
 #include "inc/BL_dialogcreateplayer.h"
 #include "ui_dialogcreateplayer.h"
-#include<QPixmap>
+#include <QPixmap>
 
-DialogCreatePlayer::DialogCreatePlayer(QWidget *parent) :   QDialog(parent),  ui(new Ui::DialogCreatePlayer){
+DialogCreatePlayer::DialogCreatePlayer(QWidget *parent) : QDialog(parent),  ui(new Ui::DialogCreatePlayer){
     ui->setupUi(this);
-    QPixmap pix(":/MyImage/imgs/SpinOff.jpg");
+    QPixmap pix(":images/Spinoff.PNG");
     int w = ui->pic->width();
     int h = ui->pic->height();
     ui->pic->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
@@ -39,7 +39,6 @@ void DialogCreatePlayer::on_buttonBox_accepted(){
         delete Msgbox;
         return;
     }
-
     this->PlayerPassword= ui->lineEditPWD->text().trimmed();
     this->PlayerName = ui->lineEditPlayerName->text().trimmed();
     //After passing all these checks we can close the dialog
