@@ -725,7 +725,7 @@ void GameEngine::intersectXBatEnemy(int i)
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
         }
-        else{
+        else if(model->getHero()->getIsAttacking()){
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
         }
