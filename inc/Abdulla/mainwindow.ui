@@ -54,6 +54,11 @@
      </property>
      <addaction name="actionLevel_1"/>
      <addaction name="actionLevel_2"/>
+     <addaction name="actionLevel_3"/>
+     <addaction name="actionLevel_4"/>
+     <addaction name="actionLevel_5"/>
+     <addaction name="actionLevel_6"/>
+     <addaction name="actionBig_Bad_Boss_Level"/>
      <addaction name="actionEnemy_Overload"/>
      <addaction name="actionBrick_Overload"/>
      <addaction name="actionCoin_Overload"/>
@@ -159,6 +164,31 @@
   <action name="actionRandomly_Generated">
    <property name="text">
     <string>Randomly Generated</string>
+   </property>
+  </action>
+  <action name="actionLevel_3">
+   <property name="text">
+    <string>Level 3</string>
+   </property>
+  </action>
+  <action name="actionLevel_4">
+   <property name="text">
+    <string>Level 4</string>
+   </property>
+  </action>
+  <action name="actionLevel_5">
+   <property name="text">
+    <string>Level 5</string>
+   </property>
+  </action>
+  <action name="actionLevel_6">
+   <property name="text">
+    <string>Level 6</string>
+   </property>
+  </action>
+  <action name="actionBig_Bad_Boss_Level">
+   <property name="text">
+    <string>Big Bad Boss Level</string>
    </property>
   </action>
  </widget>

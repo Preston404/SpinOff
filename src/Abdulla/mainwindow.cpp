@@ -343,6 +343,7 @@ void MainWindow::on_actionManual_triggered(){
 void MainWindow::on_actionWin_Script_triggered()
 {
     GameTesting * g;
+    this->Engine->aWinDemoMode = true;
     g = g->GetInstance();
     g->SetAMainWindow(this);
     g->OnWinScriptSelected();
@@ -392,25 +393,54 @@ void MainWindow::on_actionLevel_1_triggered()
 void MainWindow::on_actionRandomly_Generated_triggered()
 {
     if(this->Engine->isStarted() == false){
-        this->Model->aLevelToLoad = ":Randomly_Generated_Level.txt";
-        if(this->Engine->ActivePlayer == 0){
-            QMessageBox *Msgbox = new QMessageBox(this);
-            Msgbox->setIcon(QMessageBox::Critical);
-            Msgbox->setGeometry(300, 400, 200, 50);
-            Msgbox->setText("Load a player before selecting a level !");
-            Msgbox->exec();
-            delete Msgbox;
+
+        QString directory = QDir::currentPath();
+        QDir::setCurrent("..");
+        QString filename = QDir::currentPath();
+        QDir::setCurrent(directory);
+        filename.append("/Randomly_Generated_File.txt");
+        QFile file(filename);
+        if(file.exists()){
+            this->Model->aLevelToLoad = filename;
+            if(this->Engine->ActivePlayer == 0){
+                QMessageBox *Msgbox = new QMessageBox(this);
+                Msgbox->setIcon(QMessageBox::Critical);
+                Msgbox->setGeometry(300, 400, 200, 50);
+                Msgbox->setText("Load a player before selecting a level !");
+                Msgbox->exec();
+                delete Msgbox;
+            }
+            else{
+                this->Engine->ActivePlayer->aLevelToLoad = filename;
+                QMessageBox *Msgbox = new QMessageBox(this);
+                Msgbox->setIcon(QMessageBox::Critical);
+                Msgbox->setGeometry(300, 400, 200, 50);
+                Msgbox->setText("Your randomly generated level will be loaded !\nTo generate a new level go to Menu->Generate a New Level !"
+                                "\nPlease select New Game to play !");
+                Msgbox->exec();
+                delete Msgbox;
+           }
         }
         else{
-            this->Engine->ActivePlayer->aLevelToLoad = ":Randomly_Generated_Level.txt";
-            QMessageBox *Msgbox = new QMessageBox(this);
-            Msgbox->setIcon(QMessageBox::Critical);
-            Msgbox->setGeometry(300, 400, 200, 50);
-            Msgbox->setText("Your randomly generated level will be loaded !\nTo generate a new level go to Menu->Generate a New Level !\nIf you have not generated a level,"
-                            "Level 1 will load !\nPlease select New Game to play !");
-            Msgbox->exec();
-            delete Msgbox;
-       }
+            this->Model->aLevelToLoad = ":Level_1.txt";
+            if(this->Engine->ActivePlayer == 0){
+                QMessageBox *Msgbox = new QMessageBox(this);
+                Msgbox->setIcon(QMessageBox::Critical);
+                Msgbox->setGeometry(300, 400, 200, 50);
+                Msgbox->setText("Load a player before selecting a level !");
+                Msgbox->exec();
+                delete Msgbox;
+            }
+            else{
+                this->Engine->ActivePlayer->aLevelToLoad = ":Level_1.txt";
+                QMessageBox *Msgbox = new QMessageBox(this);
+                Msgbox->setIcon(QMessageBox::Critical);
+                Msgbox->setGeometry(300, 400, 200, 50);
+                Msgbox->setText("Level 1 will be loaded !\nPlease select New Game to play !");
+                Msgbox->exec();
+                delete Msgbox;
+           }
+        }
     }
     else{
         QMessageBox *Msgbox = new QMessageBox(this);
@@ -430,6 +460,166 @@ void MainWindow::on_actionGenerate_a_New_Level_triggered()
     cl->GenerateLevel();
     objectpool->returnResource(cl);
 
+}
+
+void MainWindow::on_actionLevel_3_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Level_3.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Level_3.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Level 3 will be loaded !\nPlease select New Game to play !");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
+}
+
+void MainWindow::on_actionLevel_4_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Level_4.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Level_4.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Level 4 will be loaded !\nPlease select New Game to play !");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
+}
+//loads level 5 (more enemies than level 4)
+void MainWindow::on_actionLevel_5_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Level_5.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Level_5.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Level 5 will be loaded !\nPlease select New Game to play !");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
+}
+//loads level 6
+void MainWindow::on_actionLevel_6_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Level_6.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Level_6.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Level 6 will be loaded !\nPlease select New Game to play !");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
+}
+//Loads the boss level
+void MainWindow::on_actionBig_Bad_Boss_Level_triggered()
+{
+    if(this->Engine->isStarted() == false){
+        this->Model->aLevelToLoad = ":Big_Bad_Boss_Level.txt";
+        if(this->Engine->ActivePlayer == 0){
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Load a player before selecting a level !");
+            Msgbox->exec();
+            delete Msgbox;
+        }
+        else{
+            this->Engine->ActivePlayer->aLevelToLoad = ":Big_Bad_Boss_Level.txt";
+            QMessageBox *Msgbox = new QMessageBox(this);
+            Msgbox->setIcon(QMessageBox::Critical);
+            Msgbox->setGeometry(300, 400, 200, 50);
+            Msgbox->setText("Big Bad Boss Level will be loaded !\nPlease select New Game to play !\nGood Luck ;)");
+            Msgbox->exec();
+            delete Msgbox;
+       }
+    }
+    else{
+        QMessageBox *Msgbox = new QMessageBox(this);
+        Msgbox->setIcon(QMessageBox::Critical);
+        Msgbox->setGeometry(300, 400, 200, 50);
+        Msgbox->setText("Finish the game before selecting a new level !");
+        Msgbox->exec();
+        delete Msgbox;
+    }
 }
 //loads level 2
 void MainWindow::on_actionLevel_2_triggered()

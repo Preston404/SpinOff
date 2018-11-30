@@ -21,6 +21,7 @@ GameEngine::GameEngine(GameModel *m, QWidget *v) : QObject(){
     //Used to apply a smooth landing with right and down arrows, can make jmps shorter or longer
     xRelative = -100;
     yRelative = 0;
+    aWinDemoMode = false;
     //used to clac the offset when doing background animation
     iterBackground=0;
 }
@@ -621,7 +622,13 @@ bool GameEngine::intersectLeftBoss(int i, Boss* b)
         if(b->intersectLeft(model->getHero()->getRect())){
             b->startAttackSword();
             if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
-                model->getHero()->setIsHurted(true);
+                if(aWinDemoMode == true){
+                    b->decrementHealth();
+                    return true;
+                }
+                else{
+                    model->getHero()->setIsHurted(true);
+                }
             }
             else{
                 if(!b->getHitCoolDown()){
@@ -657,7 +664,13 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
         if(b->intersectRight(model->getHero()->getRect())){
             b->startAttackSword();
             if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
-                model->getHero()->setIsHurted(true);
+                if(aWinDemoMode == true){
+                    b->decrementHealth();
+                    return true;
+                }
+                else{
+                    model->getHero()->setIsHurted(true);
+                }
             }
             else{
                 if(!b->getHitCoolDown()){
@@ -708,7 +721,14 @@ void GameEngine::intersectXBatEnemy(int i)
             return;
         }
 #endif
-
+        if(aWinDemoMode == true){
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+            return;
+        }
+        else{
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+            return;
+        }
         this->model->getHero()->setIsHurted(true);
     }
 
@@ -727,7 +747,12 @@ void GameEngine::intersectYBatEnemy(int i){
         model->getEnemyBat()->at(i)->setDestroyed(true);
     }
     else if(!model->getEnemyBat()->at(i)->isDestroyed() && !getIsAttacking()){
-        this->model->getHero()->setIsHurted(true);
+        if(aWinDemoMode == true){
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+        }
+        else{
+            this->model->getHero()->setIsHurted(true);
+        }
     }
 }
 

@@ -137,7 +137,8 @@ public:
 
     //The Current Player using the game
     Player* ActivePlayer;
-
+    //enter demo mode
+    bool aWinDemoMode;
 
 
     //No implementation
@@ -151,7 +152,6 @@ public slots:
 
 private:
     void timerEvent(QTimerEvent *event);
-
     GameModel *model;
     QWidget *viewport;
     bool gameStarted;

@@ -73,6 +73,16 @@ private slots:
 
     void on_actionGenerate_a_New_Level_triggered();
 
+    void on_actionLevel_3_triggered();
+
+    void on_actionLevel_4_triggered();
+
+    void on_actionLevel_5_triggered();
+
+    void on_actionLevel_6_triggered();
+
+    void on_actionBig_Bad_Boss_Level_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

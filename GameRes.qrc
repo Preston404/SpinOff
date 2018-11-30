@@ -28,5 +28,10 @@
         <file>images/Spinoff.PNG</file>
         <file>images/RedXButton.png</file>
         <file>images/play_green_round_button_4218.jpg</file>
+        <file>Big_Bad_Boss_Level.txt</file>
+        <file>Level_6.txt</file>
+        <file>Level_5.txt</file>
+        <file>Level_4.txt</file>
+        <file>Level_3.txt</file>
     </qresource>
 </RCC>
