@@ -15,11 +15,21 @@ class Hero : public QObject, public GameCharacter
     Q_OBJECT
 
 private:
+    // Singleton Pattern Implementation
     static Hero* instance;
     Hero(int, int);
 
+    // Class members used for sword attack
+    QTimer* timer;
+    int ms_time;
+
+    // This variable is set to true when the player loses
+    bool isHurted = false;
+
 public:
     ~Hero(){}
+
+    // Singleton Functions
     static Hero* getInstance(int, int);
     static Hero* getInstance();
 
@@ -36,20 +46,17 @@ public:
     }
 
     void startAttackSword();
-    QTimer* timer;
-    QTimer* timer2;
-    int ms_time;
-    int tempMove = 0;
+
+    // Function used to implement prototype pattern
     static Hero* clone(int x, int y);
 
+    // Variable used for animation timing
+    int tempMove = 0;
 
-private:
-    bool isHurted = false;
 
 public slots:
+    // Slot used for attack timing, updates every 100 milliseconds
     void on_100_ms();
-    void on_10_ms();
-
 };
 
 #endif

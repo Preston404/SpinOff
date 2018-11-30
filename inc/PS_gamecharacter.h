@@ -124,7 +124,7 @@ public:
 
 
     bool intersect(QRect );
-    bool attack_intersect(QRect );
+    bool attackIntersect(QRect );
     void accept(PaintHelper *p) {
         p->PaintPixmap(this);
     }

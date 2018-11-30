@@ -35,7 +35,7 @@ bool GameCharacter::intersect(QRect r){
 }
 
 //Check to see if the hero is within attacking distance of an enemy
-bool GameCharacter::attack_intersect(QRect r)
+bool GameCharacter::attackIntersect(QRect r)
 {
     int top_left_x = 0;
     int top_left_y = 0;
@@ -44,9 +44,10 @@ bool GameCharacter::attack_intersect(QRect r)
 
     QRect attack_range;
     getRect().getCoords(&top_left_x, &top_left_y, &bottom_right_x, &bottom_right_y);
+    int x_range = 25;
 
-    QPoint top_left = QPoint(top_left_x - 50, top_left_y - 50);
-    QPoint bottom_right = QPoint(bottom_right_x + 50, bottom_right_y + 50);
+    QPoint top_left = QPoint(top_left_x - x_range, top_left_y - 50);
+    QPoint bottom_right = QPoint(bottom_right_x + x_range, bottom_right_y + 50);
 
     attack_range.setTopLeft(top_left);
     attack_range.setBottomRight(bottom_right);

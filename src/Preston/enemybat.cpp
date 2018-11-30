@@ -14,3 +14,4 @@ EnemyBat* EnemyBat::clone(int x, int y){
     EnemyBat* b = new EnemyBat(x, y);
     return b;
 };
+

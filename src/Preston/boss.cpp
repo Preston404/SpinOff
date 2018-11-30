@@ -62,12 +62,8 @@ void Boss::on_100_ms(){
     }
 }
 
-
-
-
 void Boss::startAttackSword(){
     if(!getIsAttacking() && ms_time == -1){
-        //QSound::play("grunt_sound.wav");
         setIsAttacking(true);
 
     }
@@ -75,6 +71,23 @@ void Boss::startAttackSword(){
 
 Boss* Boss::clone(int x, int y){
     return new Boss(x,y);
+}
+
+//Check to see if the hero is within attacking distance of an enemy
+bool Boss::attackIntersect(QRect r)
+{
+    //qDebug() << QString::number(r.x()) << " "  << QString::number(this->getSrcRect().x());
+    int attack_range = 500;
+    if(abs(this->getRect().x() - r.x()) < attack_range)
+    {
+        qDebug("In Attack Range");
+        return true;
+    }
+    else
+    {
+        //qDebug("Not In Attack Range");
+        return false;
+    }
 }
 
 

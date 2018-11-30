@@ -15,6 +15,7 @@ public:
     }
     ~EnemyBat();
 
+    bool intersectBottom(QRect r);
     static EnemyBat* clone(int x, int y);
 };
 

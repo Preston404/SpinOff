@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QTimer>
 #include "inc/PS_gamecharacter.h"
+#include "inc/PS_hero.h"
 #include <QObject>
 #include <QVariant>
 #include <QSound>
@@ -39,6 +40,7 @@ public:
         }
         hitCoolDown = true;
     }
+    bool attackIntersect(QRect);
 
     void startAttackSword();
     static Boss* clone(int x, int y);
