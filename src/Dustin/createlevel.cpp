@@ -46,47 +46,38 @@ void CreateLevel::GenerateLevel(){
             //next level down (some chance of an enemy)
             stream << "e ";
             for(i = 0; i < 300; i++){
-                j = rand() % 30;
-                //1/30 to create a critter
-                if(j == 0){
-                    stream << "4";
+                if(i < 5){
+                    //add a coin
+                    stream << "9";
                 }
-                //1/30 to create a swordsman
-                else if( j == 1){
-                    stream << "6";
-                }
-                else{
+                else
                     stream << "0";
-                }
             }
             stream << endl;
             //next level, row d
             stream << "d ";
-            for(i = 0; i < 300; i++){
+            for(i = 0; i < 275; i++){
                 j = rand() % 30;
-                //2/30 to create a critter
-                if(j < 2){
-                    stream << "4";
-                }
-                //2/30 to create a swordsman
-                else if(j == 2 || j == 3){
-                    stream << "6";
-                }
-                else if(j >3 && j < 6){
+                //creates a block with grass
+                if(j >10 && j < 14){
                     stream << "7";
                 }
-                else if(j > 6 && j< 10){
+                //creates a coin
+                else if(j > 14 && j< 30){
                     stream << "9";
                 }
                 else{
                     stream << "0";
                 }
             }
+            for(i = 0; i < 25; i++){
+                stream << "0";
+            }
             stream << endl;
             file.flush();
             //next level, row c
             stream << "c ";
-            for(i = 0; i < 300; i++){
+            for(i = 0; i < 275; i++){
                 j = rand() % 30;
                 //4/30 to create a critter
                 if(j < 4){
@@ -100,12 +91,16 @@ void CreateLevel::GenerateLevel(){
                 else if(j > 9 && j < 15){
                     stream << "7";
                 }
-                else if(j > 15 && j< 25){
+                //creates a coin
+                else if(j > 15 && j< 30){
                     stream << "9";
                 }
                 else{
                     stream << "0";
                 }
+            }            
+            for(i = 0; i < 25; i++){
+                stream << "0";
             }
             stream << endl;
             //next level, row b
