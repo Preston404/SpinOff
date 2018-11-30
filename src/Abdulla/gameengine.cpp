@@ -21,6 +21,7 @@ GameEngine::GameEngine(GameModel *m, QWidget *v) : QObject(){
     //Used to apply a smooth landing with right and down arrows, can make jmps shorter or longer
     xRelative = -100;
     yRelative = 0;
+    aWinDemoMode = false;
     //used to clac the offset when doing background animation
     iterBackground=0;
 }
@@ -494,10 +495,10 @@ void GameEngine::moveXBoss(int y, Boss* b)
     int x = b->getRect().x();
 
     if(!intersectLeftBoss(0, b) && b->getIsMovingL() ){
-        x -= (Brick::speed * 1) / 4;
+        x -= (Brick::speed * 2) / 4;
     }
     else if( !intersectRightBoss(0, b) && b->getIsMovingR()){
-        x += (Brick::speed * 1) / 4;
+        x += (Brick::speed * 2) / 4;
     }
     b->move(x,y);
 }
@@ -532,7 +533,8 @@ bool GameEngine::intersectBottomHero(int i)
         {
             if(model->getHero()->intersectBottom(model->getEnemyBat()->at(i)->getRect()) ) {
                 intersectYBatEnemy(i);
-                return true; }
+                return true;
+            }
         }
         intersectBottomHero(i+1);
     }
@@ -600,10 +602,19 @@ bool GameEngine::intersectLeftBoss(int i, Boss* b)
         if(b->intersectLeft(model->getHero()->getRect())){
             b->startAttackSword();
             if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
-                model->getHero()->setIsHurted(true);
+                if(aWinDemoMode == true){
+                    b->decrementHealth();
+                    return true;
+                }
+                else{
+                    model->getHero()->setIsHurted(true);
+                }
             }
             else{
-                b->setIsHurted(true);
+                if(!b->getHitCoolDown()){
+                    b->decrementHealth();
+                }
+                //b->setIsHurted(true);
             }
             return true;
         }
@@ -620,7 +631,8 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
     {
         if(!model->getFloors()->empty() && i<model->getFloors()->size() )
         {
-            if(b->intersectRight(model->getFloors()->at(i)->getRect()))
+            if(b->intersectRight(model->getFloors()->at(i)->getRect()) &&
+                    model->getFloors()->at(i)->getRect().top() > b->getRectPtr()->bottom() + 25)
                 return true;
         }
         if(!model->getBossList()->empty() && i<model->getBossList()->size())
@@ -631,10 +643,19 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
         if(b->intersectRight(model->getHero()->getRect())){
             b->startAttackSword();
             if(!model->getHero()->getIsAttacking() && !b->getIsHurted()){
-                model->getHero()->setIsHurted(true);
+                if(aWinDemoMode == true){
+                    b->decrementHealth();
+                    return true;
+                }
+                else{
+                    model->getHero()->setIsHurted(true);
+                }
             }
             else{
-                b->setIsHurted(true);
+                if(!b->getHitCoolDown()){
+                    b->decrementHealth();
+                }
+                //b->setIsHurted(true);
             }
             return true;
         }
@@ -678,7 +699,14 @@ void GameEngine::intersectXBatEnemy(int i)
             return;
         }
 #endif
-
+        if(aWinDemoMode == true){
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+            return;
+        }
+        else{
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+            return;
+        }
         this->model->getHero()->setIsHurted(true);
     }
 
@@ -695,6 +723,14 @@ void GameEngine::intersectYBatEnemy(int i){
     if(!model->getEnemyBat()->at(i)->isDestroyed() && getIsAttacking())    {
         getModel()->getEnemyBat()->at(i)->setSprite(QString(":images/EnemyBat_die.png"));
         model->getEnemyBat()->at(i)->setDestroyed(true);
+    }
+    else if(!model->getEnemyBat()->at(i)->isDestroyed() && !getIsAttacking()){
+        if(aWinDemoMode == true){
+            model->getEnemyBat()->at(i)->setDestroyed(true);
+        }
+        else{
+            this->model->getHero()->setIsHurted(true);
+        }
     }
 }
 
