@@ -494,10 +494,10 @@ void GameEngine::moveXBoss(int y, Boss* b)
     int x = b->getRect().x();
 
     if(!intersectLeftBoss(0, b) && b->getIsMovingL() ){
-        x -= (Brick::speed * 2) / 4;
+        x -= (Brick::speed * 1) / 4;
     }
     else if( !intersectRightBoss(0, b) && b->getIsMovingR()){
-        x += (Brick::speed * 2) / 4;
+        x += (Brick::speed * 1) / 4;
     }
     b->move(x,y);
 }
@@ -532,8 +532,7 @@ bool GameEngine::intersectBottomHero(int i)
         {
             if(model->getHero()->intersectBottom(model->getEnemyBat()->at(i)->getRect()) ) {
                 intersectYBatEnemy(i);
-                return true;
-            }
+                return true; }
         }
         intersectBottomHero(i+1);
     }
@@ -604,10 +603,7 @@ bool GameEngine::intersectLeftBoss(int i, Boss* b)
                 model->getHero()->setIsHurted(true);
             }
             else{
-                if(!b->getHitCoolDown()){
-                    b->decrementHealth();
-                }
-                //b->setIsHurted(true);
+                b->setIsHurted(true);
             }
             return true;
         }
@@ -624,8 +620,7 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
     {
         if(!model->getFloors()->empty() && i<model->getFloors()->size() )
         {
-            if(b->intersectRight(model->getFloors()->at(i)->getRect()) &&
-                    model->getFloors()->at(i)->getRect().top() > b->getRectPtr()->bottom() + 25)
+            if(b->intersectRight(model->getFloors()->at(i)->getRect()))
                 return true;
         }
         if(!model->getBossList()->empty() && i<model->getBossList()->size())
@@ -639,10 +634,7 @@ bool GameEngine::intersectRightBoss(int i, Boss* b)
                 model->getHero()->setIsHurted(true);
             }
             else{
-                if(!b->getHitCoolDown()){
-                    b->decrementHealth();
-                }
-                //b->setIsHurted(true);
+                b->setIsHurted(true);
             }
             return true;
         }
@@ -703,9 +695,6 @@ void GameEngine::intersectYBatEnemy(int i){
     if(!model->getEnemyBat()->at(i)->isDestroyed() && getIsAttacking())    {
         getModel()->getEnemyBat()->at(i)->setSprite(QString(":images/EnemyBat_die.png"));
         model->getEnemyBat()->at(i)->setDestroyed(true);
-    }
-    else if(!model->getEnemyBat()->at(i)->isDestroyed() && !getIsAttacking()){
-        this->model->getHero()->setIsHurted(true);
     }
 }
 

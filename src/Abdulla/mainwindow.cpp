@@ -414,8 +414,8 @@ void MainWindow::on_actionRandomly_Generated_triggered()
                 QMessageBox *Msgbox = new QMessageBox(this);
                 Msgbox->setIcon(QMessageBox::Critical);
                 Msgbox->setGeometry(300, 400, 200, 50);
-                Msgbox->setText("Your randomly generated level will be loaded !\nTo generate a new level go to Menu->Generate a New Level !"
-                                "\nPlease select New Game to play !");
+                Msgbox->setText("Your randomly generated level will be loaded !\nTo generate a new level go to Menu->Generate a New Level !\nIf you have not generated a level,"
+                                "Level 1 will load !\nPlease select New Game to play !");
                 Msgbox->exec();
                 delete Msgbox;
            }
