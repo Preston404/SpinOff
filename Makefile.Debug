@@ -190,9 +190,15 @@ compiler_rcc_clean:
 debug/qrc_GameRes.cpp: GameRes.qrc \
 		C:/Qt/5.11.1/mingw53_32/bin/rcc.exe \
 		Level_1_block_overload.txt \
+		Level_5.txt \
 		Level_1_enemies_overload.txt \
+		Level_4.txt \
 		Level_1_coin_overload.txt \
+		Level_3.txt \
+		Randomly_Generated_Level.txt \
 		Level_2.txt \
+		Level_6.txt \
+		Big_Bad_Boss_Level.txt \
 		Level_1_tst.txt \
 		Level_1.txt \
 		images/floor_bottom.png \
@@ -204,6 +210,8 @@ debug/qrc_GameRes.cpp: GameRes.qrc \
 		images/hero_attacking_right.png \
 		images/EnemyBat_die.png \
 		images/Spinoff.PNG \
+		images/play_green_round_button_4218.jpg \
+		images/RedXButton.png \
 		images/hero_walk_sprites_left_shadow.png \
 		images/hero_attacking_left.png \
 		images/hero_attacking_left_shadow.png \
@@ -1449,6 +1457,7 @@ debug/moc_PS_boss.cpp: C:/Qt/5.11.1/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/QPaintDevice \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/QPaintEngine \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/qpaintengine.h \
+		inc/PS_hero.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QObject \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/QSound \
@@ -2731,13 +2740,13 @@ debug/gamemodel.o: src/Abdulla/gamemodel.cpp inc/AA_gamemodel.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/qbasictimer.h \
 		inc/PS_gamecharacter.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/QPixmap \
+		inc/PS_hero.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QObject \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/QSound \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/qsound.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/qtmultimediaglobal.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/qtmultimedia-config.h \
-		inc/PS_hero.h \
 		inc/IR_floor.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qmessagebox.h \
@@ -3823,6 +3832,7 @@ debug/boss.o: src/Preston/boss.cpp inc/PS_boss.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/QPaintDevice \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/QPaintEngine \
 		C:/Qt/5.11.1/mingw53_32/include/QtGui/qpaintengine.h \
+		inc/PS_hero.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QObject \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.11.1/mingw53_32/include/QtMultimedia/QSound \

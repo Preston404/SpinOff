@@ -725,10 +725,11 @@ void GameEngine::intersectXBatEnemy(int i)
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
         }
+        /*
         else{
             model->getEnemyBat()->at(i)->setDestroyed(true);
             return;
-        }
+        }*/
         this->model->getHero()->setIsHurted(true);
     }
 
