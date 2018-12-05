@@ -80,7 +80,7 @@ bool Boss::attackIntersect(QRect r)
     int attack_range = 500;
     if(abs(this->getRect().x() - r.x()) < attack_range)
     {
-        qDebug("In Attack Range");
+        //qDebug("In Attack Range");
         return true;
     }
     else
