@@ -384,13 +384,17 @@ void GameEngine::movementBoss()
         else{
             if(model->getHero()->getRect().x() < bossPtr->getRect().x() &&
                bossPtr->attackIntersect(model->getHero()->getRect()) &&
-               (bossPtr->getRect().x() - model->getHero()->getRect().x()) > 15){
+               ((bossPtr->getRect().x() - model->getHero()->getRect().x()) > 15 ||
+                 model->getHero()->getRect().y() + 75 > bossPtr->getRect().y())){
+
                 bossPtr->setIsMovingL(true);
                 bossPtr->setIsMovingR(false);
             }
             else if(bossPtr->attackIntersect(model->getHero()->getRect()) &&
                     model->getHero()->getRect().x() > bossPtr->getRect().x() &&
-                    (model->getHero()->getRect().x() - bossPtr->getRect().x()) > 15){
+                    ((model->getHero()->getRect().x() - bossPtr->getRect().x()) > 15 ||
+                      model->getHero()->getRect().y() + 75 > bossPtr->getRect().y())){
+
                 bossPtr->setIsMovingL(false);
                 bossPtr->setIsMovingR(true);
             }
